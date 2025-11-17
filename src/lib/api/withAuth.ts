@@ -35,7 +35,7 @@ export function withAuth(handler: RouteHandler) {
     authenticatedReq.user = {
       id: session.user.id,
       email: session.user.email!,
-      name: session.user.name,
+      name: session.user.name ?? null,
       role: session.user.role,
     };
 
