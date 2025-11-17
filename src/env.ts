@@ -6,6 +6,9 @@
 
 import { z } from 'zod';
 
+// Skip validation during build if SKIP_ENV_VALIDATION is set
+const skipValidation = process.env.SKIP_ENV_VALIDATION === '1';
+
 const envSchema = z.object({
   // Database
   DATABASE_URL: z.string().url(),
@@ -40,20 +43,35 @@ const clientEnvSchema = z.object({
  * Server-side environment variables
  * These are only available on the server and should never be exposed to the client
  */
-export const env = envSchema.parse({
-  DATABASE_URL: process.env.DATABASE_URL,
-  PRISMA_DATABASE_URL: process.env.PRISMA_DATABASE_URL,
-  NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
-  NEXTAUTH_URL: process.env.NEXTAUTH_URL,
-  GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
-  GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
-  MICROSOFT_CLIENT_ID: process.env.MICROSOFT_CLIENT_ID,
-  MICROSOFT_CLIENT_SECRET: process.env.MICROSOFT_CLIENT_SECRET,
-  MICROSOFT_TENANT_ID: process.env.MICROSOFT_TENANT_ID,
-  DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
-  DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
-  NODE_ENV: process.env.NODE_ENV,
-});
+export const env = skipValidation
+  ? (envSchema.parse({
+      DATABASE_URL: process.env.DATABASE_URL || 'postgresql://localhost:5432/uxercise',
+      PRISMA_DATABASE_URL: process.env.PRISMA_DATABASE_URL || 'postgresql://localhost:5432/uxercise',
+      NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET || 'dummy-secret-at-least-32-chars-long-for-build',
+      NEXTAUTH_URL: process.env.NEXTAUTH_URL || 'http://localhost:3000',
+      GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID || 'dummy-client-id',
+      GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET || 'dummy-secret',
+      MICROSOFT_CLIENT_ID: process.env.MICROSOFT_CLIENT_ID || 'dummy-client-id',
+      MICROSOFT_CLIENT_SECRET: process.env.MICROSOFT_CLIENT_SECRET || 'dummy-secret',
+      MICROSOFT_TENANT_ID: process.env.MICROSOFT_TENANT_ID,
+      DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID || 'dummy-client-id',
+      DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET || 'dummy-secret',
+      NODE_ENV: process.env.NODE_ENV,
+    }) as z.infer<typeof envSchema>)
+  : envSchema.parse({
+      DATABASE_URL: process.env.DATABASE_URL,
+      PRISMA_DATABASE_URL: process.env.PRISMA_DATABASE_URL,
+      NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+      NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+      GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+      GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
+      MICROSOFT_CLIENT_ID: process.env.MICROSOFT_CLIENT_ID,
+      MICROSOFT_CLIENT_SECRET: process.env.MICROSOFT_CLIENT_SECRET,
+      MICROSOFT_TENANT_ID: process.env.MICROSOFT_TENANT_ID,
+      DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
+      DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
+      NODE_ENV: process.env.NODE_ENV,
+    });
 
 /**
  * Client-side environment variables

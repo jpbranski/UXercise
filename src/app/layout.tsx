@@ -4,10 +4,7 @@
  */
 
 import type { Metadata } from 'next';
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { uxerciseTheme } from '@/theme/uxerciseTheme';
+import { ThemeRegistry } from '@/components/providers/ThemeRegistry';
 import { clientEnv } from '@/env';
 import './globals.css';
 
@@ -61,12 +58,7 @@ export default function RootLayout({
         )}
       </head>
       <body>
-        <AppRouterCacheProvider>
-          <ThemeProvider theme={uxerciseTheme}>
-            <CssBaseline />
-            {children}
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+        <ThemeRegistry>{children}</ThemeRegistry>
       </body>
     </html>
   );
