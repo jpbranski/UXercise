@@ -4,7 +4,7 @@
  */
 
 import { prisma } from '@/lib/db';
-import { ActionType, EntityType } from '@prisma/client';
+import { ActionType, EntityType } from '@/types/prisma';
 
 export interface ChangeLogParams {
   actorId: string;

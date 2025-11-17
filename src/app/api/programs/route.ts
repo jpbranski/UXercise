@@ -12,7 +12,7 @@ import { withRateLimit } from '@/lib/api/withRateLimit';
 import { canAccessUserData } from '@/lib/api/withAuth';
 import { logProgramChange } from '@/lib/api/changeLog';
 import { prisma } from '@/lib/db';
-import { ScheduleType } from '@prisma/client';
+import { ScheduleType, ActionType } from '@/types/prisma';
 
 const createProgramSchema = z.object({
   name: z.string().min(1).max(100),
@@ -93,7 +93,7 @@ export const POST = withErrorHandling(
       });
 
       // Log change
-      await logProgramChange(req.user.id, targetUserId, 'CREATE', program.id, program.name, {
+      await logProgramChange(req.user.id, targetUserId, ActionType.CREATE, program.id, program.name, {
         scheduleType: program.scheduleType,
       });
 

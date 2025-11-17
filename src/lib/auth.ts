@@ -6,11 +6,11 @@
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import NextAuth, { type DefaultSession } from 'next-auth';
 import Google from 'next-auth/providers/google';
-import Microsoft from 'next-auth/providers/microsoft';
+import MicrosoftEntraId from 'next-auth/providers/microsoft-entra-id';
 import Discord from 'next-auth/providers/discord';
 import { prisma } from '@/lib/db';
 import { env } from '@/env';
-import type { UserRole } from '@prisma/client';
+import type { UserRole } from '@/types/prisma';
 
 /**
  * Module augmentation for NextAuth types
@@ -30,17 +30,17 @@ declare module 'next-auth' {
 }
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter(prisma) as any,
   providers: [
     Google({
       clientId: env.GOOGLE_CLIENT_ID,
       clientSecret: env.GOOGLE_CLIENT_SECRET,
       allowDangerousEmailAccountLinking: true,
     }),
-    Microsoft({
+    MicrosoftEntraId({
       clientId: env.MICROSOFT_CLIENT_ID,
       clientSecret: env.MICROSOFT_CLIENT_SECRET,
-      tenantId: env.MICROSOFT_TENANT_ID,
+      issuer: `https://login.microsoftonline.com/${env.MICROSOFT_TENANT_ID}/v2.0`,
       allowDangerousEmailAccountLinking: true,
     }),
     Discord({

@@ -203,7 +203,7 @@ export default async function DashboardPage() {
             </Typography>
             {data.recentWorkouts.length > 0 ? (
               <Stack spacing={2} sx={{ mt: 2 }}>
-                {data.recentWorkouts.map((workout) => (
+                {data.recentWorkouts.map((workout: any) => (
                   <Card key={workout.id} variant="outlined">
                     <CardContent>
                       <Stack direction="row" justifyContent="space-between" alignItems="start">
@@ -220,7 +220,7 @@ export default async function DashboardPage() {
                             })}
                           </Typography>
                           <Typography variant="caption" color="text.secondary">
-                            {workout.sets.length} sets across {new Set(workout.sets.map((s) => s.exerciseId)).size}{' '}
+                            {workout.sets.length} sets across {new Set(workout.sets.map((s: any) => s.exerciseId)).size}{' '}
                             exercises
                           </Typography>
                         </Box>

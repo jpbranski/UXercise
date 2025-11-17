@@ -11,7 +11,7 @@ import { withErrorHandling } from '@/lib/api/withErrorHandling';
 import { withRateLimit } from '@/lib/api/withRateLimit';
 import { logExerciseChange } from '@/lib/api/changeLog';
 import { prisma } from '@/lib/db';
-import { MuscleGroup } from '@prisma/client';
+import { MuscleGroup, ActionType } from '@/types/prisma';
 
 const createExerciseSchema = z.object({
   name: z.string().min(1).max(100),
@@ -77,7 +77,7 @@ export const POST = withErrorHandling(
       });
 
       // Log change
-      await logExerciseChange(req.user.id, req.user.id, 'CREATE', exercise.id, exercise.name, {
+      await logExerciseChange(req.user.id, req.user.id, ActionType.CREATE, exercise.id, exercise.name, {
         primaryMuscleGroup: exercise.primaryMuscleGroup,
       });
 

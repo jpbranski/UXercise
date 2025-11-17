@@ -12,6 +12,7 @@ import { withRateLimit } from '@/lib/api/withRateLimit';
 import { canAccessUserData } from '@/lib/api/withAuth';
 import { logWorkoutChange } from '@/lib/api/changeLog';
 import { prisma } from '@/lib/db';
+import { ActionType } from '@/types/prisma';
 
 const workoutSetSchema = z.object({
   exerciseId: z.string(),
@@ -113,7 +114,7 @@ export const POST = withErrorHandling(
       });
 
       // Log change
-      await logWorkoutChange(req.user.id, targetUserId, 'CREATE', workout.id, workout.date, {
+      await logWorkoutChange(req.user.id, targetUserId, ActionType.CREATE, workout.id, workout.date, {
         setsCount: data.sets.length,
         perceivedIntensity: data.perceivedIntensity,
       });

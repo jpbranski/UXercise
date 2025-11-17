@@ -165,8 +165,8 @@ export default async function AnalyticsPage() {
               Recent Workout Summary
             </Typography>
             <Stack spacing={2} sx={{ mt: 2 }}>
-              {data.workoutSessions.slice(0, 5).map((workout) => {
-                const totalVolume = workout.sets.reduce((sum, set) => {
+              {data.workoutSessions.slice(0, 5).map((workout: any) => {
+                const totalVolume = workout.sets.reduce((sum: number, set: any) => {
                   return sum + (set.weight || 0) * set.reps;
                 }, 0);
 

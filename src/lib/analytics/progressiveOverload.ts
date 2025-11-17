@@ -3,7 +3,16 @@
  * Calculates training volume, trends, and 1RM estimates
  */
 
-import type { WorkoutSet, Exercise } from '@prisma/client';
+type WorkoutSet = {
+  isWarmup: boolean;
+  weight: number | null;
+  reps: number;
+};
+
+type Exercise = {
+  primaryMuscleGroup: string;
+  name: string;
+};
 
 export interface WorkoutSetWithExercise extends WorkoutSet {
   exercise: Exercise;

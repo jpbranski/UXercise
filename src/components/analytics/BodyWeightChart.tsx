@@ -7,7 +7,11 @@
 
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { useTheme } from '@mui/material/styles';
-import type { BodyWeightEntry } from '@prisma/client';
+
+type BodyWeightEntry = {
+  date: Date | string;
+  weight: number;
+};
 
 interface BodyWeightChartProps {
   data: BodyWeightEntry[];

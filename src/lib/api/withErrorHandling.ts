@@ -5,7 +5,6 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { ZodError } from 'zod';
-import { Prisma } from '@prisma/client';
 
 type RouteHandler = (req: NextRequest, context?: any) => Promise<Response> | Response;
 
@@ -56,36 +55,38 @@ export function withErrorHandling(handler: RouteHandler) {
         );
       }
 
-      // Prisma errors
-      if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      // Prisma errors (check for code property to identify Prisma errors)
+      if (error && typeof error === 'object' && 'code' in error && typeof (error as any).code === 'string') {
+        const prismaError = error as { code: string; meta?: any };
+
         // Unique constraint violation
-        if (error.code === 'P2002') {
+        if (prismaError.code === 'P2002') {
           return NextResponse.json(
             {
               error: 'Resource already exists',
-              details: error.meta,
+              details: prismaError.meta,
             },
             { status: 409 }
           );
         }
 
         // Foreign key constraint violation
-        if (error.code === 'P2003') {
+        if (prismaError.code === 'P2003') {
           return NextResponse.json(
             {
               error: 'Related resource not found',
-              details: error.meta,
+              details: prismaError.meta,
             },
             { status: 400 }
           );
         }
 
         // Record not found
-        if (error.code === 'P2025') {
+        if (prismaError.code === 'P2025') {
           return NextResponse.json(
             {
               error: 'Resource not found',
-              details: error.meta,
+              details: prismaError.meta,
             },
             { status: 404 }
           );
