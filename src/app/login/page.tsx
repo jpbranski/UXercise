@@ -91,7 +91,7 @@ export default async function LoginPage() {
                 <form
                   action={async () => {
                     'use server';
-                    await signIn('microsoft', { redirectTo: '/dashboard' });
+                    await signIn('azure-ad', { redirectTo: '/dashboard' });
                   }}
                 >
                   <Button

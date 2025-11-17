@@ -6,7 +6,7 @@
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import NextAuth, { type DefaultSession } from 'next-auth';
 import Google from 'next-auth/providers/google';
-import Microsoft from 'next-auth/providers/microsoft';
+import AzureAd from 'next-auth/providers/azure-ad';
 import Discord from 'next-auth/providers/discord';
 import { prisma } from '@/lib/db';
 import { env } from '@/env';
@@ -37,7 +37,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       clientSecret: env.GOOGLE_CLIENT_SECRET,
       allowDangerousEmailAccountLinking: true,
     }),
-    Microsoft({
+    AzureAd({
       clientId: env.MICROSOFT_CLIENT_ID,
       clientSecret: env.MICROSOFT_CLIENT_SECRET,
       tenantId: env.MICROSOFT_TENANT_ID,
