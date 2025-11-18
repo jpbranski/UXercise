@@ -5,7 +5,8 @@
     "type": "legs",
     "muscleGroup": "quads",
     "equipment": ["barbell", "rack"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "lower"
   },
   {
     "id": "bench_press",
@@ -13,7 +14,8 @@
     "type": "push",
     "muscleGroup": "chest",
     "equipment": ["barbell", "bench"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
   },
   {
     "id": "deadlift",
@@ -21,7 +23,8 @@
     "type": "pull",
     "muscleGroup": "back",
     "equipment": ["barbell"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "full"
   },
   {
     "id": "overhead_press",
@@ -29,7 +32,8 @@
     "type": "push",
     "muscleGroup": "shoulders",
     "equipment": ["barbell"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
   },
   {
     "id": "barbell_row",
@@ -37,7 +41,8 @@
     "type": "pull",
     "muscleGroup": "back",
     "equipment": ["barbell"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
   },
   {
     "id": "pull_ups",
@@ -45,7 +50,8 @@
     "type": "pull",
     "muscleGroup": "back",
     "equipment": ["pull-up bar"],
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "bodyRegion": "upper"
   },
   {
     "id": "dips",
@@ -53,7 +59,8 @@
     "type": "push",
     "muscleGroup": "triceps",
     "equipment": ["dip bars"],
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "bodyRegion": "upper"
   },
   {
     "id": "romanian_deadlift",
@@ -61,7 +68,8 @@
     "type": "pull",
     "muscleGroup": "hamstrings",
     "equipment": ["barbell"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "lower"
   },
   {
     "id": "front_squat",
@@ -69,7 +77,8 @@
     "type": "legs",
     "muscleGroup": "quads",
     "equipment": ["barbell", "rack"],
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "bodyRegion": "lower"
   },
   {
     "id": "incline_bench",
@@ -77,7 +86,8 @@
     "type": "push",
     "muscleGroup": "chest",
     "equipment": ["barbell", "bench"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
   },
   {
     "id": "lat_pulldown",
@@ -85,7 +95,8 @@
     "type": "pull",
     "muscleGroup": "back",
     "equipment": ["cable machine"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
   },
   {
     "id": "leg_press",
@@ -93,7 +104,8 @@
     "type": "legs",
     "muscleGroup": "quads",
     "equipment": ["leg press machine"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "lower"
   },
   {
     "id": "leg_curl",
@@ -101,7 +113,8 @@
     "type": "legs",
     "muscleGroup": "hamstrings",
     "equipment": ["leg curl machine"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "lower"
   },
   {
     "id": "leg_extension",
@@ -109,7 +122,8 @@
     "type": "legs",
     "muscleGroup": "quads",
     "equipment": ["leg extension machine"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "lower"
   },
   {
     "id": "cable_row",
@@ -117,7 +131,8 @@
     "type": "pull",
     "muscleGroup": "back",
     "equipment": ["cable machine"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
   },
   {
     "id": "face_pulls",
@@ -125,7 +140,8 @@
     "type": "pull",
     "muscleGroup": "rear delts",
     "equipment": ["cable machine"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
   },
   {
     "id": "lateral_raises",
@@ -133,7 +149,8 @@
     "type": "push",
     "muscleGroup": "shoulders",
     "equipment": ["dumbbells"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
   },
   {
     "id": "bicep_curls",
@@ -141,7 +158,8 @@
     "type": "pull",
     "muscleGroup": "biceps",
     "equipment": ["barbell"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
   },
   {
     "id": "tricep_pushdown",
@@ -149,7 +167,8 @@
     "type": "push",
     "muscleGroup": "triceps",
     "equipment": ["cable machine"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
   },
   {
     "id": "goblet_squat",
@@ -157,7 +176,8 @@
     "type": "legs",
     "muscleGroup": "quads",
     "equipment": ["dumbbell"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "lower"
   },
   {
     "id": "db_bench_press",
@@ -165,7 +185,8 @@
     "type": "push",
     "muscleGroup": "chest",
     "equipment": ["dumbbells", "bench"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
   },
   {
     "id": "db_row",
@@ -173,7 +194,8 @@
     "type": "pull",
     "muscleGroup": "back",
     "equipment": ["dumbbell", "bench"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
   },
   {
     "id": "db_shoulder_press",
@@ -181,7 +203,8 @@
     "type": "push",
     "muscleGroup": "shoulders",
     "equipment": ["dumbbells"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
   },
   {
     "id": "lunges",
@@ -189,7 +212,8 @@
     "type": "legs",
     "muscleGroup": "quads",
     "equipment": ["dumbbells"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "lower"
   },
   {
     "id": "bulgarian_split_squat",
@@ -197,7 +221,8 @@
     "type": "legs",
     "muscleGroup": "quads",
     "equipment": ["dumbbells", "bench"],
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "bodyRegion": "lower"
   },
   {
     "id": "hip_thrust",
@@ -205,7 +230,8 @@
     "type": "legs",
     "muscleGroup": "glutes",
     "equipment": ["barbell", "bench"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "lower"
   },
   {
     "id": "chest_fly",
@@ -213,7 +239,8 @@
     "type": "push",
     "muscleGroup": "chest",
     "equipment": ["dumbbells", "bench"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
   },
   {
     "id": "hammer_curls",
@@ -221,7 +248,8 @@
     "type": "pull",
     "muscleGroup": "biceps",
     "equipment": ["dumbbells"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
   },
   {
     "id": "skull_crushers",
@@ -229,7 +257,8 @@
     "type": "push",
     "muscleGroup": "triceps",
     "equipment": ["barbell", "bench"],
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "bodyRegion": "upper"
   },
   {
     "id": "cable_crossover",
@@ -237,7 +266,8 @@
     "type": "push",
     "muscleGroup": "chest",
     "equipment": ["cable machine"],
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "bodyRegion": "upper"
   },
   {
     "id": "plank",
@@ -245,7 +275,8 @@
     "type": "core",
     "muscleGroup": "abs",
     "equipment": ["bodyweight"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "core"
   },
   {
     "id": "hanging_leg_raise",
@@ -253,7 +284,8 @@
     "type": "core",
     "muscleGroup": "abs",
     "equipment": ["pull-up bar"],
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "bodyRegion": "core"
   },
   {
     "id": "ab_wheel",
@@ -261,7 +293,8 @@
     "type": "core",
     "muscleGroup": "abs",
     "equipment": ["ab wheel"],
-    "difficulty": "advanced"
+    "difficulty": "advanced",
+    "bodyRegion": "core"
   },
   {
     "id": "russian_twist",
@@ -269,7 +302,8 @@
     "type": "core",
     "muscleGroup": "obliques",
     "equipment": ["bodyweight"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "core"
   },
   {
     "id": "push_ups",
@@ -277,7 +311,8 @@
     "type": "push",
     "muscleGroup": "chest",
     "equipment": ["bodyweight"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
   },
   {
     "id": "chin_ups",
@@ -285,7 +320,8 @@
     "type": "pull",
     "muscleGroup": "biceps",
     "equipment": ["pull-up bar"],
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "bodyRegion": "upper"
   },
   {
     "id": "inverted_rows",
@@ -293,7 +329,8 @@
     "type": "pull",
     "muscleGroup": "back",
     "equipment": ["barbell", "rack"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
   },
   {
     "id": "pike_pushups",
@@ -301,7 +338,8 @@
     "type": "push",
     "muscleGroup": "shoulders",
     "equipment": ["bodyweight"],
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "bodyRegion": "upper"
   },
   {
     "id": "box_jumps",
@@ -309,7 +347,8 @@
     "type": "cardio",
     "muscleGroup": "legs",
     "equipment": ["plyo box"],
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "bodyRegion": "lower"
   },
   {
     "id": "burpees",
@@ -317,7 +356,8 @@
     "type": "cardio",
     "muscleGroup": "full body",
     "equipment": ["bodyweight"],
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "bodyRegion": "full"
   },
   {
     "id": "jump_rope",
@@ -325,7 +365,8 @@
     "type": "cardio",
     "muscleGroup": "cardio",
     "equipment": ["jump rope"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "full"
   },
   {
     "id": "kettlebell_swing",
@@ -333,7 +374,8 @@
     "type": "cardio",
     "muscleGroup": "posterior chain",
     "equipment": ["kettlebell"],
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "bodyRegion": "full"
   },
   {
     "id": "battle_ropes",
@@ -341,7 +383,8 @@
     "type": "cardio",
     "muscleGroup": "full body",
     "equipment": ["battle ropes"],
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "bodyRegion": "full"
   },
   {
     "id": "mountain_climbers",
@@ -349,7 +392,8 @@
     "type": "cardio",
     "muscleGroup": "core",
     "equipment": ["bodyweight"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "full"
   },
   {
     "id": "farmers_walk",
@@ -357,7 +401,8 @@
     "type": "cardio",
     "muscleGroup": "grip",
     "equipment": ["dumbbells"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "full"
   },
   {
     "id": "calf_raises",
@@ -365,7 +410,8 @@
     "type": "legs",
     "muscleGroup": "calves",
     "equipment": ["bodyweight"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "lower"
   },
   {
     "id": "shrugs",
@@ -373,7 +419,8 @@
     "type": "pull",
     "muscleGroup": "traps",
     "equipment": ["barbell"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
   },
   {
     "id": "good_morning",
@@ -381,7 +428,8 @@
     "type": "pull",
     "muscleGroup": "hamstrings",
     "equipment": ["barbell"],
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "bodyRegion": "lower"
   },
   {
     "id": "sumo_deadlift",
@@ -389,7 +437,8 @@
     "type": "pull",
     "muscleGroup": "legs",
     "equipment": ["barbell"],
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "bodyRegion": "full"
   },
   {
     "id": "pause_squat",
@@ -397,7 +446,8 @@
     "type": "legs",
     "muscleGroup": "quads",
     "equipment": ["barbell", "rack"],
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "bodyRegion": "lower"
   },
   {
     "id": "close_grip_bench",
@@ -405,7 +455,8 @@
     "type": "push",
     "muscleGroup": "triceps",
     "equipment": ["barbell", "bench"],
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "bodyRegion": "upper"
   },
   {
     "id": "preacher_curls",
@@ -413,7 +464,8 @@
     "type": "pull",
     "muscleGroup": "biceps",
     "equipment": ["ez bar", "bench"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
   },
   {
     "id": "arnold_press",
@@ -421,7 +473,8 @@
     "type": "push",
     "muscleGroup": "shoulders",
     "equipment": ["dumbbells"],
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "bodyRegion": "upper"
   },
   {
     "id": "reverse_fly",
@@ -429,7 +482,8 @@
     "type": "pull",
     "muscleGroup": "rear delts",
     "equipment": ["dumbbells"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
   },
   {
     "id": "decline_bench",
@@ -437,7 +491,8 @@
     "type": "push",
     "muscleGroup": "chest",
     "equipment": ["barbell", "bench"],
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "bodyRegion": "upper"
   },
   {
     "id": "landmine_press",
@@ -445,7 +500,8 @@
     "type": "push",
     "muscleGroup": "shoulders",
     "equipment": ["barbell", "landmine"],
-    "difficulty": "intermediate"
+    "difficulty": "intermediate",
+    "bodyRegion": "upper"
   },
   {
     "id": "ring_dips",
@@ -453,7 +509,8 @@
     "type": "push",
     "muscleGroup": "chest",
     "equipment": ["gymnastic rings"],
-    "difficulty": "advanced"
+    "difficulty": "advanced",
+    "bodyRegion": "upper"
   },
   {
     "id": "ring_rows",
@@ -461,7 +518,8 @@
     "type": "pull",
     "muscleGroup": "back",
     "equipment": ["gymnastic rings"],
-    "difficulty": "beginner"
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
   },
   {
     "id": "muscle_up",
@@ -469,7 +527,8 @@
     "type": "pull",
     "muscleGroup": "back",
     "equipment": ["pull-up bar"],
-    "difficulty": "advanced"
+    "difficulty": "advanced",
+    "bodyRegion": "upper"
   },
   {
     "id": "handstand_pushup",
@@ -477,6 +536,412 @@
     "type": "push",
     "muscleGroup": "shoulders",
     "equipment": ["bodyweight"],
-    "difficulty": "advanced"
+    "difficulty": "advanced",
+    "bodyRegion": "upper"
+  },
+  {
+    "id": "db_incline_press",
+    "name": "Dumbbell Incline Press",
+    "type": "push",
+    "muscleGroup": "chest",
+    "equipment": ["dumbbells", "bench"],
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
+  },
+  {
+    "id": "cable_chest_press",
+    "name": "Cable Chest Press",
+    "type": "push",
+    "muscleGroup": "chest",
+    "equipment": ["cable machine"],
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
+  },
+  {
+    "id": "pec_deck",
+    "name": "Pec Deck Machine",
+    "type": "push",
+    "muscleGroup": "chest",
+    "equipment": ["machine"],
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
+  },
+  {
+    "id": "t_bar_row",
+    "name": "T-Bar Row",
+    "type": "pull",
+    "muscleGroup": "back",
+    "equipment": ["barbell", "landmine"],
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
+  },
+  {
+    "id": "wide_grip_pulldown",
+    "name": "Wide Grip Lat Pulldown",
+    "type": "pull",
+    "muscleGroup": "back",
+    "equipment": ["cable machine"],
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
+  },
+  {
+    "id": "straight_arm_pulldown",
+    "name": "Straight Arm Pulldown",
+    "type": "pull",
+    "muscleGroup": "lats",
+    "equipment": ["cable machine"],
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
+  },
+  {
+    "id": "db_pullover",
+    "name": "Dumbbell Pullover",
+    "type": "pull",
+    "muscleGroup": "lats",
+    "equipment": ["dumbbell", "bench"],
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
+  },
+  {
+    "id": "military_press",
+    "name": "Military Press",
+    "type": "push",
+    "muscleGroup": "shoulders",
+    "equipment": ["barbell"],
+    "difficulty": "intermediate",
+    "bodyRegion": "upper"
+  },
+  {
+    "id": "upright_row",
+    "name": "Upright Row",
+    "type": "pull",
+    "muscleGroup": "shoulders",
+    "equipment": ["barbell"],
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
+  },
+  {
+    "id": "front_raises",
+    "name": "Front Raises",
+    "type": "push",
+    "muscleGroup": "shoulders",
+    "equipment": ["dumbbells"],
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
+  },
+  {
+    "id": "rear_delt_fly",
+    "name": "Rear Delt Cable Fly",
+    "type": "pull",
+    "muscleGroup": "rear delts",
+    "equipment": ["cable machine"],
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
+  },
+  {
+    "id": "cable_lateral_raise",
+    "name": "Cable Lateral Raise",
+    "type": "push",
+    "muscleGroup": "shoulders",
+    "equipment": ["cable machine"],
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
+  },
+  {
+    "id": "overhead_tricep_ext",
+    "name": "Overhead Tricep Extension",
+    "type": "push",
+    "muscleGroup": "triceps",
+    "equipment": ["dumbbell"],
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
+  },
+  {
+    "id": "rope_pushdown",
+    "name": "Rope Tricep Pushdown",
+    "type": "push",
+    "muscleGroup": "triceps",
+    "equipment": ["cable machine"],
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
+  },
+  {
+    "id": "diamond_pushups",
+    "name": "Diamond Push-ups",
+    "type": "push",
+    "muscleGroup": "triceps",
+    "equipment": ["bodyweight"],
+    "difficulty": "intermediate",
+    "bodyRegion": "upper"
+  },
+  {
+    "id": "concentration_curls",
+    "name": "Concentration Curls",
+    "type": "pull",
+    "muscleGroup": "biceps",
+    "equipment": ["dumbbell"],
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
+  },
+  {
+    "id": "cable_curls",
+    "name": "Cable Bicep Curls",
+    "type": "pull",
+    "muscleGroup": "biceps",
+    "equipment": ["cable machine"],
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
+  },
+  {
+    "id": "ez_bar_curls",
+    "name": "EZ Bar Curls",
+    "type": "pull",
+    "muscleGroup": "biceps",
+    "equipment": ["ez bar"],
+    "difficulty": "beginner",
+    "bodyRegion": "upper"
+  },
+  {
+    "id": "hack_squat",
+    "name": "Hack Squat",
+    "type": "legs",
+    "muscleGroup": "quads",
+    "equipment": ["hack squat machine"],
+    "difficulty": "beginner",
+    "bodyRegion": "lower"
+  },
+  {
+    "id": "walking_lunge",
+    "name": "Barbell Walking Lunges",
+    "type": "legs",
+    "muscleGroup": "quads",
+    "equipment": ["barbell"],
+    "difficulty": "intermediate",
+    "bodyRegion": "lower"
+  },
+  {
+    "id": "step_ups",
+    "name": "Step-ups",
+    "type": "legs",
+    "muscleGroup": "quads",
+    "equipment": ["box", "dumbbells"],
+    "difficulty": "beginner",
+    "bodyRegion": "lower"
+  },
+  {
+    "id": "sissy_squat",
+    "name": "Sissy Squat",
+    "type": "legs",
+    "muscleGroup": "quads",
+    "equipment": ["bodyweight"],
+    "difficulty": "advanced",
+    "bodyRegion": "lower"
+  },
+  {
+    "id": "seated_leg_curl",
+    "name": "Seated Leg Curl",
+    "type": "legs",
+    "muscleGroup": "hamstrings",
+    "equipment": ["machine"],
+    "difficulty": "beginner",
+    "bodyRegion": "lower"
+  },
+  {
+    "id": "glute_ham_raise",
+    "name": "Glute Ham Raise",
+    "type": "legs",
+    "muscleGroup": "hamstrings",
+    "equipment": ["GHD machine"],
+    "difficulty": "intermediate",
+    "bodyRegion": "lower"
+  },
+  {
+    "id": "nordic_curls",
+    "name": "Nordic Curls",
+    "type": "legs",
+    "muscleGroup": "hamstrings",
+    "equipment": ["bodyweight"],
+    "difficulty": "advanced",
+    "bodyRegion": "lower"
+  },
+  {
+    "id": "cable_kickbacks",
+    "name": "Cable Glute Kickbacks",
+    "type": "legs",
+    "muscleGroup": "glutes",
+    "equipment": ["cable machine"],
+    "difficulty": "beginner",
+    "bodyRegion": "lower"
+  },
+  {
+    "id": "glute_bridge",
+    "name": "Glute Bridge",
+    "type": "legs",
+    "muscleGroup": "glutes",
+    "equipment": ["bodyweight"],
+    "difficulty": "beginner",
+    "bodyRegion": "lower"
+  },
+  {
+    "id": "single_leg_rdl",
+    "name": "Single Leg Romanian Deadlift",
+    "type": "legs",
+    "muscleGroup": "hamstrings",
+    "equipment": ["dumbbell"],
+    "difficulty": "intermediate",
+    "bodyRegion": "lower"
+  },
+  {
+    "id": "adductor_machine",
+    "name": "Hip Adductor Machine",
+    "type": "legs",
+    "muscleGroup": "adductors",
+    "equipment": ["machine"],
+    "difficulty": "beginner",
+    "bodyRegion": "lower"
+  },
+  {
+    "id": "abductor_machine",
+    "name": "Hip Abductor Machine",
+    "type": "legs",
+    "muscleGroup": "abductors",
+    "equipment": ["machine"],
+    "difficulty": "beginner",
+    "bodyRegion": "lower"
+  },
+  {
+    "id": "seated_calf_raise",
+    "name": "Seated Calf Raise",
+    "type": "legs",
+    "muscleGroup": "calves",
+    "equipment": ["machine"],
+    "difficulty": "beginner",
+    "bodyRegion": "lower"
+  },
+  {
+    "id": "dead_bug",
+    "name": "Dead Bug",
+    "type": "core",
+    "muscleGroup": "abs",
+    "equipment": ["bodyweight"],
+    "difficulty": "beginner",
+    "bodyRegion": "core"
+  },
+  {
+    "id": "bird_dog",
+    "name": "Bird Dog",
+    "type": "core",
+    "muscleGroup": "core",
+    "equipment": ["bodyweight"],
+    "difficulty": "beginner",
+    "bodyRegion": "core"
+  },
+  {
+    "id": "side_plank",
+    "name": "Side Plank",
+    "type": "core",
+    "muscleGroup": "obliques",
+    "equipment": ["bodyweight"],
+    "difficulty": "beginner",
+    "bodyRegion": "core"
+  },
+  {
+    "id": "cable_crunch",
+    "name": "Cable Crunch",
+    "type": "core",
+    "muscleGroup": "abs",
+    "equipment": ["cable machine"],
+    "difficulty": "beginner",
+    "bodyRegion": "core"
+  },
+  {
+    "id": "bicycle_crunch",
+    "name": "Bicycle Crunches",
+    "type": "core",
+    "muscleGroup": "abs",
+    "equipment": ["bodyweight"],
+    "difficulty": "beginner",
+    "bodyRegion": "core"
+  },
+  {
+    "id": "flutter_kicks",
+    "name": "Flutter Kicks",
+    "type": "core",
+    "muscleGroup": "abs",
+    "equipment": ["bodyweight"],
+    "difficulty": "beginner",
+    "bodyRegion": "core"
+  },
+  {
+    "id": "woodchopper",
+    "name": "Cable Woodchoppers",
+    "type": "core",
+    "muscleGroup": "obliques",
+    "equipment": ["cable machine"],
+    "difficulty": "intermediate",
+    "bodyRegion": "core"
+  },
+  {
+    "id": "pallof_press",
+    "name": "Pallof Press",
+    "type": "core",
+    "muscleGroup": "core",
+    "equipment": ["cable machine"],
+    "difficulty": "beginner",
+    "bodyRegion": "core"
+  },
+  {
+    "id": "rowing_machine",
+    "name": "Rowing Machine",
+    "type": "cardio",
+    "muscleGroup": "full body",
+    "equipment": ["rowing machine"],
+    "difficulty": "beginner",
+    "bodyRegion": "full"
+  },
+  {
+    "id": "assault_bike",
+    "name": "Assault Bike",
+    "type": "cardio",
+    "muscleGroup": "full body",
+    "equipment": ["assault bike"],
+    "difficulty": "beginner",
+    "bodyRegion": "full"
+  },
+  {
+    "id": "sled_push",
+    "name": "Sled Push",
+    "type": "cardio",
+    "muscleGroup": "legs",
+    "equipment": ["sled"],
+    "difficulty": "intermediate",
+    "bodyRegion": "full"
+  },
+  {
+    "id": "sled_pull",
+    "name": "Sled Pull",
+    "type": "cardio",
+    "muscleGroup": "back",
+    "equipment": ["sled"],
+    "difficulty": "intermediate",
+    "bodyRegion": "full"
+  },
+  {
+    "id": "high_knees",
+    "name": "High Knees",
+    "type": "cardio",
+    "muscleGroup": "cardio",
+    "equipment": ["bodyweight"],
+    "difficulty": "beginner",
+    "bodyRegion": "full"
+  },
+  {
+    "id": "butt_kicks",
+    "name": "Butt Kicks",
+    "type": "cardio",
+    "muscleGroup": "cardio",
+    "equipment": ["bodyweight"],
+    "difficulty": "beginner",
+    "bodyRegion": "full"
   }
 ]

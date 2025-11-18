@@ -1,0 +1,192 @@
+'use client';
+
+import { useState } from 'react';
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+  TextField,
+  ToggleButtonGroup,
+  ToggleButton,
+  Box,
+  Typography,
+  List,
+  ListItem,
+  IconButton,
+  Switch,
+  FormControlLabel,
+} from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Section } from '@/types/workout';
+import ExercisePicker from './ExercisePicker';
+import StyledNumberInput from './StyledNumberInput';
+
+interface SectionEditorProps {
+  open: boolean;
+  onClose: () => void;
+  onSave: (section: Section) => void;
+  initialSection?: Section;
+}
+
+export default function SectionEditor({ open, onClose, onSave, initialSection }: SectionEditorProps) {
+  const [name, setName] = useState(initialSection?.name || '');
+  const [type, setType] = useState<'standard' | 'interval'>(initialSection?.type || 'standard');
+  const [exercises, setExercises] = useState(initialSection?.exercises || []);
+  const [intervalCount, setIntervalCount] = useState(
+    (initialSection?.type === 'interval' && initialSection.intervalCount) || 3
+  );
+  const [toFailure, setToFailure] = useState(
+    (initialSection?.type === 'interval' && initialSection.toFailure) || false
+  );
+  const [duration, setDuration] = useState(
+    (initialSection?.type === 'interval' && initialSection.duration) || 30
+  );
+  const [exercisePickerOpen, setExercisePickerOpen] = useState(false);
+
+  const handleSave = () => {
+    const section: Section =
+      type === 'standard'
+        ? {
+            id: initialSection?.id || `section-${Date.now()}`,
+            type: 'standard',
+            name,
+            exercises,
+          }
+        : {
+            id: initialSection?.id || `section-${Date.now()}`,
+            type: 'interval',
+            name,
+            exercises,
+            intervalCount: toFailure ? undefined : intervalCount,
+            toFailure,
+            duration: toFailure ? undefined : duration,
+          };
+
+    onSave(section);
+    onClose();
+  };
+
+  const addExercise = (exercise: any) => {
+    setExercises([
+      ...exercises,
+      {
+        id: exercise.id,
+        name: exercise.name,
+        sets: [{ sets: 3, reps: 8, weight: 0 }],
+      },
+    ]);
+  };
+
+  const removeExercise = (index: number) => {
+    setExercises(exercises.filter((_, i) => i !== index));
+  };
+
+  return (
+    <>
+      <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
+        <DialogTitle>{initialSection ? 'Edit Section' : 'Add Section'}</DialogTitle>
+        <DialogContent>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, pt: 1 }}>
+            <TextField
+              label="Section Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              fullWidth
+            />
+
+            <Box>
+              <Typography variant="body2" sx={{ mb: 1 }}>
+                Section Type:
+              </Typography>
+              <ToggleButtonGroup
+                value={type}
+                exclusive
+                onChange={(_, val) => val && setType(val)}
+                fullWidth
+              >
+                <ToggleButton value="standard">Standard</ToggleButton>
+                <ToggleButton value="interval">Interval</ToggleButton>
+              </ToggleButtonGroup>
+            </Box>
+
+            {type === 'interval' && (
+              <Box>
+                <FormControlLabel
+                  control={<Switch checked={toFailure} onChange={(e) => setToFailure(e.target.checked)} />}
+                  label="To Failure"
+                />
+                {!toFailure && (
+                  <Box sx={{ display: 'flex', gap: 2, mt: 1 }}>
+                    <StyledNumberInput
+                      label="Intervals"
+                      value={intervalCount}
+                      onChange={(e) => setIntervalCount(Number(e.target.value))}
+                      min={1}
+                      fullWidth
+                    />
+                    <StyledNumberInput
+                      label="Duration (s)"
+                      value={duration}
+                      onChange={(e) => setDuration(Number(e.target.value))}
+                      min={1}
+                      fullWidth
+                    />
+                  </Box>
+                )}
+              </Box>
+            )}
+
+            <Box>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+                <Typography variant="body2">Exercises:</Typography>
+                <Button
+                  size="small"
+                  startIcon={<AddIcon />}
+                  onClick={() => setExercisePickerOpen(true)}
+                >
+                  Add Exercise
+                </Button>
+              </Box>
+
+              <List>
+                {exercises.map((ex, idx) => (
+                  <ListItem
+                    key={idx}
+                    secondaryAction={
+                      <IconButton edge="end" onClick={() => removeExercise(idx)}>
+                        <DeleteIcon />
+                      </IconButton>
+                    }
+                  >
+                    <Typography variant="body2">{ex.name}</Typography>
+                  </ListItem>
+                ))}
+              </List>
+
+              {exercises.length === 0 && (
+                <Typography color="text.secondary" sx={{ textAlign: 'center', py: 2 }}>
+                  No exercises added
+                </Typography>
+              )}
+            </Box>
+          </Box>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={onClose}>Cancel</Button>
+          <Button onClick={handleSave} variant="contained" disabled={!name || exercises.length === 0}>
+            Save
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      <ExercisePicker
+        open={exercisePickerOpen}
+        onClose={() => setExercisePickerOpen(false)}
+        onSelect={addExercise}
+      />
+    </>
+  );
+}
