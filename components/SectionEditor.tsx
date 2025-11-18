@@ -14,14 +14,17 @@ import {
   Typography,
   List,
   ListItem,
+  ListItemButton,
   IconButton,
   Switch,
   FormControlLabel,
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Section } from '@/types/workout';
+import EditIcon from '@mui/icons-material/Edit';
+import { Section, Exercise } from '@/types/workout';
 import ExercisePicker from './ExercisePicker';
+import ExerciseEditModal from './ExerciseEditModal';
 import StyledNumberInput from './StyledNumberInput';
 
 interface SectionEditorProps {
@@ -45,6 +48,7 @@ export default function SectionEditor({ open, onClose, onSave, initialSection }:
     (initialSection?.type === 'interval' && initialSection.duration) || 30
   );
   const [exercisePickerOpen, setExercisePickerOpen] = useState(false);
+  const [editingExercise, setEditingExercise] = useState<{ exercise: Exercise; index: number } | null>(null);
 
   const handleSave = () => {
     const section: Section =
@@ -76,12 +80,31 @@ export default function SectionEditor({ open, onClose, onSave, initialSection }:
         id: exercise.id,
         name: exercise.name,
         sets: [{ sets: 3, reps: 8, weight: 0 }],
+        restSeconds: 60,
+        perSet: [
+          { reps: 8, weight: 0, restSeconds: undefined },
+          { reps: 8, weight: 0, restSeconds: undefined },
+          { reps: 8, weight: 0, restSeconds: undefined },
+        ],
       },
     ]);
   };
 
   const removeExercise = (index: number) => {
     setExercises(exercises.filter((_, i) => i !== index));
+  };
+
+  const handleEditExercise = (exercise: Exercise, index: number) => {
+    setEditingExercise({ exercise, index });
+  };
+
+  const handleSaveExercise = (updatedExercise: Exercise) => {
+    if (editingExercise !== null) {
+      setExercises((prev) =>
+        prev.map((ex, i) => (i === editingExercise.index ? updatedExercise : ex))
+      );
+      setEditingExercise(null);
+    }
   };
 
   return (
@@ -155,13 +178,30 @@ export default function SectionEditor({ open, onClose, onSave, initialSection }:
                 {exercises.map((ex, idx) => (
                   <ListItem
                     key={idx}
+                    disablePadding
                     secondaryAction={
-                      <IconButton edge="end" onClick={() => removeExercise(idx)}>
-                        <DeleteIcon />
-                      </IconButton>
+                      <Box>
+                        <IconButton size="small" onClick={() => handleEditExercise(ex, idx)}>
+                          <EditIcon />
+                        </IconButton>
+                        <IconButton size="small" edge="end" onClick={() => removeExercise(idx)}>
+                          <DeleteIcon />
+                        </IconButton>
+                      </Box>
                     }
                   >
-                    <Typography variant="body2">{ex.name}</Typography>
+                    <ListItemButton onClick={() => handleEditExercise(ex, idx)}>
+                      <Box>
+                        <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                          {ex.name}
+                        </Typography>
+                        <Typography variant="caption" color="text.secondary">
+                          {ex.perSet
+                            ? `${ex.perSet.length} sets • ${ex.restSeconds ?? 60}s rest`
+                            : `${ex.sets[0]?.sets ?? 3}×${ex.sets[0]?.reps ?? 8}`}
+                        </Typography>
+                      </Box>
+                    </ListItemButton>
                   </ListItem>
                 ))}
               </List>
@@ -187,6 +227,15 @@ export default function SectionEditor({ open, onClose, onSave, initialSection }:
         onClose={() => setExercisePickerOpen(false)}
         onSelect={addExercise}
       />
+
+      {editingExercise && (
+        <ExerciseEditModal
+          open={true}
+          onClose={() => setEditingExercise(null)}
+          onSave={handleSaveExercise}
+          exercise={editingExercise.exercise}
+        />
+      )}
     </>
   );
 }
