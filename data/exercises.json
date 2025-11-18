@@ -1,0 +1,482 @@
+[
+  {
+    "id": "barbell_squat",
+    "name": "Barbell Back Squat",
+    "type": "legs",
+    "muscleGroup": "quads",
+    "equipment": ["barbell", "rack"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "bench_press",
+    "name": "Barbell Bench Press",
+    "type": "push",
+    "muscleGroup": "chest",
+    "equipment": ["barbell", "bench"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "deadlift",
+    "name": "Conventional Deadlift",
+    "type": "pull",
+    "muscleGroup": "back",
+    "equipment": ["barbell"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "overhead_press",
+    "name": "Overhead Press",
+    "type": "push",
+    "muscleGroup": "shoulders",
+    "equipment": ["barbell"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "barbell_row",
+    "name": "Barbell Row",
+    "type": "pull",
+    "muscleGroup": "back",
+    "equipment": ["barbell"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "pull_ups",
+    "name": "Pull-ups",
+    "type": "pull",
+    "muscleGroup": "back",
+    "equipment": ["pull-up bar"],
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "dips",
+    "name": "Parallel Bar Dips",
+    "type": "push",
+    "muscleGroup": "triceps",
+    "equipment": ["dip bars"],
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "romanian_deadlift",
+    "name": "Romanian Deadlift",
+    "type": "pull",
+    "muscleGroup": "hamstrings",
+    "equipment": ["barbell"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "front_squat",
+    "name": "Front Squat",
+    "type": "legs",
+    "muscleGroup": "quads",
+    "equipment": ["barbell", "rack"],
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "incline_bench",
+    "name": "Incline Barbell Bench Press",
+    "type": "push",
+    "muscleGroup": "chest",
+    "equipment": ["barbell", "bench"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "lat_pulldown",
+    "name": "Lat Pulldown",
+    "type": "pull",
+    "muscleGroup": "back",
+    "equipment": ["cable machine"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "leg_press",
+    "name": "Leg Press",
+    "type": "legs",
+    "muscleGroup": "quads",
+    "equipment": ["leg press machine"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "leg_curl",
+    "name": "Lying Leg Curl",
+    "type": "legs",
+    "muscleGroup": "hamstrings",
+    "equipment": ["leg curl machine"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "leg_extension",
+    "name": "Leg Extension",
+    "type": "legs",
+    "muscleGroup": "quads",
+    "equipment": ["leg extension machine"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "cable_row",
+    "name": "Seated Cable Row",
+    "type": "pull",
+    "muscleGroup": "back",
+    "equipment": ["cable machine"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "face_pulls",
+    "name": "Face Pulls",
+    "type": "pull",
+    "muscleGroup": "rear delts",
+    "equipment": ["cable machine"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "lateral_raises",
+    "name": "Dumbbell Lateral Raises",
+    "type": "push",
+    "muscleGroup": "shoulders",
+    "equipment": ["dumbbells"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "bicep_curls",
+    "name": "Barbell Bicep Curls",
+    "type": "pull",
+    "muscleGroup": "biceps",
+    "equipment": ["barbell"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "tricep_pushdown",
+    "name": "Cable Tricep Pushdown",
+    "type": "push",
+    "muscleGroup": "triceps",
+    "equipment": ["cable machine"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "goblet_squat",
+    "name": "Goblet Squat",
+    "type": "legs",
+    "muscleGroup": "quads",
+    "equipment": ["dumbbell"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "db_bench_press",
+    "name": "Dumbbell Bench Press",
+    "type": "push",
+    "muscleGroup": "chest",
+    "equipment": ["dumbbells", "bench"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "db_row",
+    "name": "One-Arm Dumbbell Row",
+    "type": "pull",
+    "muscleGroup": "back",
+    "equipment": ["dumbbell", "bench"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "db_shoulder_press",
+    "name": "Dumbbell Shoulder Press",
+    "type": "push",
+    "muscleGroup": "shoulders",
+    "equipment": ["dumbbells"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "lunges",
+    "name": "Walking Lunges",
+    "type": "legs",
+    "muscleGroup": "quads",
+    "equipment": ["dumbbells"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "bulgarian_split_squat",
+    "name": "Bulgarian Split Squat",
+    "type": "legs",
+    "muscleGroup": "quads",
+    "equipment": ["dumbbells", "bench"],
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "hip_thrust",
+    "name": "Barbell Hip Thrust",
+    "type": "legs",
+    "muscleGroup": "glutes",
+    "equipment": ["barbell", "bench"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "chest_fly",
+    "name": "Dumbbell Chest Fly",
+    "type": "push",
+    "muscleGroup": "chest",
+    "equipment": ["dumbbells", "bench"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "hammer_curls",
+    "name": "Hammer Curls",
+    "type": "pull",
+    "muscleGroup": "biceps",
+    "equipment": ["dumbbells"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "skull_crushers",
+    "name": "Skull Crushers",
+    "type": "push",
+    "muscleGroup": "triceps",
+    "equipment": ["barbell", "bench"],
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "cable_crossover",
+    "name": "Cable Crossover",
+    "type": "push",
+    "muscleGroup": "chest",
+    "equipment": ["cable machine"],
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "plank",
+    "name": "Front Plank",
+    "type": "core",
+    "muscleGroup": "abs",
+    "equipment": ["bodyweight"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "hanging_leg_raise",
+    "name": "Hanging Leg Raise",
+    "type": "core",
+    "muscleGroup": "abs",
+    "equipment": ["pull-up bar"],
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "ab_wheel",
+    "name": "Ab Wheel Rollout",
+    "type": "core",
+    "muscleGroup": "abs",
+    "equipment": ["ab wheel"],
+    "difficulty": "advanced"
+  },
+  {
+    "id": "russian_twist",
+    "name": "Russian Twists",
+    "type": "core",
+    "muscleGroup": "obliques",
+    "equipment": ["bodyweight"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "push_ups",
+    "name": "Push-ups",
+    "type": "push",
+    "muscleGroup": "chest",
+    "equipment": ["bodyweight"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "chin_ups",
+    "name": "Chin-ups",
+    "type": "pull",
+    "muscleGroup": "biceps",
+    "equipment": ["pull-up bar"],
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "inverted_rows",
+    "name": "Inverted Rows",
+    "type": "pull",
+    "muscleGroup": "back",
+    "equipment": ["barbell", "rack"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "pike_pushups",
+    "name": "Pike Push-ups",
+    "type": "push",
+    "muscleGroup": "shoulders",
+    "equipment": ["bodyweight"],
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "box_jumps",
+    "name": "Box Jumps",
+    "type": "cardio",
+    "muscleGroup": "legs",
+    "equipment": ["plyo box"],
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "burpees",
+    "name": "Burpees",
+    "type": "cardio",
+    "muscleGroup": "full body",
+    "equipment": ["bodyweight"],
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "jump_rope",
+    "name": "Jump Rope",
+    "type": "cardio",
+    "muscleGroup": "cardio",
+    "equipment": ["jump rope"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "kettlebell_swing",
+    "name": "Kettlebell Swing",
+    "type": "cardio",
+    "muscleGroup": "posterior chain",
+    "equipment": ["kettlebell"],
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "battle_ropes",
+    "name": "Battle Ropes",
+    "type": "cardio",
+    "muscleGroup": "full body",
+    "equipment": ["battle ropes"],
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "mountain_climbers",
+    "name": "Mountain Climbers",
+    "type": "cardio",
+    "muscleGroup": "core",
+    "equipment": ["bodyweight"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "farmers_walk",
+    "name": "Farmer's Walk",
+    "type": "cardio",
+    "muscleGroup": "grip",
+    "equipment": ["dumbbells"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "calf_raises",
+    "name": "Standing Calf Raises",
+    "type": "legs",
+    "muscleGroup": "calves",
+    "equipment": ["bodyweight"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "shrugs",
+    "name": "Barbell Shrugs",
+    "type": "pull",
+    "muscleGroup": "traps",
+    "equipment": ["barbell"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "good_morning",
+    "name": "Good Mornings",
+    "type": "pull",
+    "muscleGroup": "hamstrings",
+    "equipment": ["barbell"],
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "sumo_deadlift",
+    "name": "Sumo Deadlift",
+    "type": "pull",
+    "muscleGroup": "legs",
+    "equipment": ["barbell"],
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "pause_squat",
+    "name": "Pause Squat",
+    "type": "legs",
+    "muscleGroup": "quads",
+    "equipment": ["barbell", "rack"],
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "close_grip_bench",
+    "name": "Close-Grip Bench Press",
+    "type": "push",
+    "muscleGroup": "triceps",
+    "equipment": ["barbell", "bench"],
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "preacher_curls",
+    "name": "Preacher Curls",
+    "type": "pull",
+    "muscleGroup": "biceps",
+    "equipment": ["ez bar", "bench"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "arnold_press",
+    "name": "Arnold Press",
+    "type": "push",
+    "muscleGroup": "shoulders",
+    "equipment": ["dumbbells"],
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "reverse_fly",
+    "name": "Reverse Dumbbell Fly",
+    "type": "pull",
+    "muscleGroup": "rear delts",
+    "equipment": ["dumbbells"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "decline_bench",
+    "name": "Decline Bench Press",
+    "type": "push",
+    "muscleGroup": "chest",
+    "equipment": ["barbell", "bench"],
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "landmine_press",
+    "name": "Landmine Press",
+    "type": "push",
+    "muscleGroup": "shoulders",
+    "equipment": ["barbell", "landmine"],
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "ring_dips",
+    "name": "Ring Dips",
+    "type": "push",
+    "muscleGroup": "chest",
+    "equipment": ["gymnastic rings"],
+    "difficulty": "advanced"
+  },
+  {
+    "id": "ring_rows",
+    "name": "Ring Rows",
+    "type": "pull",
+    "muscleGroup": "back",
+    "equipment": ["gymnastic rings"],
+    "difficulty": "beginner"
+  },
+  {
+    "id": "muscle_up",
+    "name": "Muscle-up",
+    "type": "pull",
+    "muscleGroup": "back",
+    "equipment": ["pull-up bar"],
+    "difficulty": "advanced"
+  },
+  {
+    "id": "handstand_pushup",
+    "name": "Handstand Push-up",
+    "type": "push",
+    "muscleGroup": "shoulders",
+    "equipment": ["bodyweight"],
+    "difficulty": "advanced"
+  }
+]

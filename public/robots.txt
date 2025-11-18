@@ -1,16 +1,6 @@
-# robots.txt for UXercise
-# Allow crawling of public pages, disallow private/API routes
-
+# Allow all crawlers
 User-agent: *
 Allow: /
-Disallow: /api/
-Disallow: /dashboard
-Disallow: /programs
-Disallow: /workouts
-Disallow: /analytics
-Disallow: /exercises
-Disallow: /coach
-Disallow: /settings
 
 # Sitemap location
 Sitemap: https://uxercise.com/sitemap.xml

@@ -1,0 +1,227 @@
+[
+  {
+    "name": "Adjustable Dumbbells Set",
+    "description": "Space-saving adjustable dumbbells ranging from 5-50 lbs per hand. Perfect for home workouts.",
+    "url": "https://example.com/adjustable-dumbbells",
+    "affiliate": true,
+    "image": "/images/placeholder-dumbbells.svg",
+    "category": "Equipment",
+    "tags": ["home gym", "dumbbells", "adjustable"]
+  },
+  {
+    "name": "Power Rack with Pull-up Bar",
+    "description": "Sturdy power rack for safe squatting and bench pressing. Includes pull-up bar and safety pins.",
+    "url": "https://example.com/power-rack",
+    "affiliate": true,
+    "image": "/images/placeholder-bench.svg",
+    "category": "Equipment",
+    "tags": ["home gym", "rack", "squat"]
+  },
+  {
+    "name": "Olympic Barbell (45 lb)",
+    "description": "Standard Olympic barbell with center knurling and rotating sleeves.",
+    "url": "https://example.com/olympic-barbell",
+    "affiliate": true,
+    "image": "/images/placeholder-barbell.svg",
+    "category": "Equipment",
+    "tags": ["barbell", "olympic", "weights"]
+  },
+  {
+    "name": "Resistance Bands Set",
+    "description": "Set of 5 resistance bands with varying resistance levels for mobility and accessory work.",
+    "url": "https://example.com/resistance-bands",
+    "affiliate": true,
+    "image": "/images/placeholder-bands.svg",
+    "category": "Equipment",
+    "tags": ["bands", "mobility", "portable"]
+  },
+  {
+    "name": "Flat Weight Bench",
+    "description": "Heavy-duty flat bench rated for 600+ lbs. Stable and durable construction.",
+    "url": "https://example.com/flat-bench",
+    "affiliate": true,
+    "image": "/images/placeholder-bench.svg",
+    "category": "Equipment",
+    "tags": ["bench", "home gym", "pressing"]
+  },
+  {
+    "name": "Foam Roller",
+    "description": "High-density foam roller for self-myofascial release and recovery.",
+    "url": "https://example.com/foam-roller",
+    "affiliate": false,
+    "image": "/images/placeholder-bands.svg",
+    "category": "Recovery",
+    "tags": ["recovery", "mobility", "foam roller"]
+  },
+  {
+    "name": "Lifting Straps",
+    "description": "Durable cotton lifting straps for deadlifts and heavy pulling exercises.",
+    "url": "https://example.com/lifting-straps",
+    "affiliate": false,
+    "image": "/images/placeholder-bands.svg",
+    "category": "Accessories",
+    "tags": ["straps", "accessories", "deadlift"]
+  },
+  {
+    "name": "Weightlifting Belt (Leather)",
+    "description": "4-inch leather powerlifting belt with single prong buckle.",
+    "url": "https://example.com/lifting-belt",
+    "affiliate": true,
+    "image": "/images/placeholder-bands.svg",
+    "category": "Accessories",
+    "tags": ["belt", "powerlifting", "support"]
+  },
+  {
+    "name": "Bumper Plates Set",
+    "description": "Olympic bumper plate set (pair of 45, 35, 25, 15, 10 lb plates) for safe dropping.",
+    "url": "https://example.com/bumper-plates",
+    "affiliate": true,
+    "image": "/images/placeholder-dumbbells.svg",
+    "category": "Equipment",
+    "tags": ["plates", "olympic", "bumper"]
+  },
+  {
+    "name": "Pull-up Assistance Bands",
+    "description": "Heavy-duty resistance bands designed for assisted pull-ups and band pull-aparts.",
+    "url": "https://example.com/pullup-bands",
+    "affiliate": false,
+    "image": "/images/placeholder-bands.svg",
+    "category": "Equipment",
+    "tags": ["bands", "pull-ups", "assistance"]
+  },
+  {
+    "name": "Gymnastic Rings",
+    "description": "Wood gymnastic rings with adjustable straps for bodyweight training.",
+    "url": "https://example.com/gymnastic-rings",
+    "affiliate": false,
+    "image": "/images/placeholder-bands.svg",
+    "category": "Equipment",
+    "tags": ["bodyweight", "rings", "calisthenics"]
+  },
+  {
+    "name": "Kettlebell Set (20, 35, 50 lb)",
+    "description": "Cast iron kettlebells for swings, goblet squats, and kettlebell-specific training.",
+    "url": "https://example.com/kettlebell-set",
+    "affiliate": true,
+    "image": "/images/placeholder-dumbbells.svg",
+    "category": "Equipment",
+    "tags": ["kettlebell", "home gym", "conditioning"]
+  },
+  {
+    "name": "Yoga Mat (Extra Thick)",
+    "description": "6mm thick yoga mat with non-slip surface for yoga, stretching, and core work.",
+    "url": "https://example.com/yoga-mat",
+    "affiliate": false,
+    "image": "/images/placeholder-bands.svg",
+    "category": "Equipment",
+    "tags": ["yoga", "mat", "stretching"]
+  },
+  {
+    "name": "Jump Rope",
+    "description": "Speed jump rope with adjustable cable for cardio and conditioning.",
+    "url": "https://example.com/jump-rope",
+    "affiliate": false,
+    "image": "/images/placeholder-bands.svg",
+    "category": "Equipment",
+    "tags": ["cardio", "conditioning", "jump rope"]
+  },
+  {
+    "name": "Wrist Wraps",
+    "description": "18-inch wrist wraps for added support during pressing movements.",
+    "url": "https://example.com/wrist-wraps",
+    "affiliate": false,
+    "image": "/images/placeholder-bands.svg",
+    "category": "Accessories",
+    "tags": ["wraps", "accessories", "wrist support"]
+  },
+  {
+    "name": "Plyo Box (20/24/30 inch)",
+    "description": "3-in-1 wooden plyo box for box jumps and step-ups.",
+    "url": "https://example.com/plyo-box",
+    "affiliate": true,
+    "image": "/images/placeholder-bench.svg",
+    "category": "Equipment",
+    "tags": ["plyo", "box jumps", "conditioning"]
+  },
+  {
+    "name": "Ab Wheel Roller",
+    "description": "Sturdy ab wheel with foam handles for core strengthening exercises.",
+    "url": "https://example.com/ab-wheel",
+    "affiliate": false,
+    "image": "/images/placeholder-dumbbells.svg",
+    "category": "Equipment",
+    "tags": ["core", "abs", "home gym"]
+  },
+  {
+    "name": "Lacrosse Ball (2-pack)",
+    "description": "Firm massage balls for trigger point therapy and mobility work.",
+    "url": "https://example.com/lacrosse-balls",
+    "affiliate": false,
+    "image": "/images/placeholder-dumbbells.svg",
+    "category": "Recovery",
+    "tags": ["recovery", "mobility", "massage"]
+  },
+  {
+    "name": "Dip Station",
+    "description": "Freestanding dip bars for bodyweight dips and L-sits.",
+    "url": "https://example.com/dip-station",
+    "affiliate": true,
+    "image": "/images/placeholder-bench.svg",
+    "category": "Equipment",
+    "tags": ["bodyweight", "dips", "home gym"]
+  },
+  {
+    "name": "Weighted Vest (20 lb)",
+    "description": "Adjustable weighted vest for adding resistance to bodyweight exercises.",
+    "url": "https://example.com/weighted-vest",
+    "affiliate": false,
+    "image": "/images/placeholder-bands.svg",
+    "category": "Equipment",
+    "tags": ["bodyweight", "weighted", "resistance"]
+  },
+  {
+    "name": "Massage Gun",
+    "description": "Percussion massage device for muscle recovery and tension relief.",
+    "url": "https://example.com/massage-gun",
+    "affiliate": true,
+    "image": "/images/placeholder-dumbbells.svg",
+    "category": "Recovery",
+    "tags": ["recovery", "massage", "percussion"]
+  },
+  {
+    "name": "Lifting Chalk Block",
+    "description": "Gym chalk for improved grip on heavy lifts.",
+    "url": "https://example.com/chalk",
+    "affiliate": false,
+    "image": "/images/placeholder-dumbbells.svg",
+    "category": "Accessories",
+    "tags": ["chalk", "accessories", "grip"]
+  },
+  {
+    "name": "Squat Wedges",
+    "description": "Heel elevation wedges for improved squat depth and ankle mobility.",
+    "url": "https://example.com/squat-wedges",
+    "affiliate": false,
+    "image": "/images/placeholder-bench.svg",
+    "category": "Accessories",
+    "tags": ["squat", "mobility", "accessories"]
+  },
+  {
+    "name": "Barbell Collars (Spring)",
+    "description": "Spring-style barbell collars for securing plates during lifts.",
+    "url": "https://example.com/barbell-collars",
+    "affiliate": false,
+    "image": "/images/placeholder-barbell.svg",
+    "category": "Accessories",
+    "tags": ["collars", "barbell", "accessories"]
+  },
+  {
+    "name": "EZ Curl Bar",
+    "description": "Angled curl bar for reduced wrist strain during bicep and tricep exercises.",
+    "url": "https://example.com/ez-bar",
+    "affiliate": true,
+    "image": "/images/placeholder-barbell.svg",
+    "category": "Equipment",
+    "tags": ["barbell", "arms", "ez bar"]
+  }
+]

@@ -1,0 +1,242 @@
+[
+  {
+    "title": "StrongLifts 5x5 Overview",
+    "description": "Beginner strength program focusing on compound movements with progressive overload.",
+    "url": "https://stronglifts.com/5x5/",
+    "category": "Programs",
+    "tags": ["beginner", "strength", "barbell"],
+    "affiliate": false
+  },
+  {
+    "title": "Starting Strength Wiki",
+    "description": "Comprehensive guide to the Starting Strength program and barbell training fundamentals.",
+    "url": "https://startingstrength.com/",
+    "category": "Programs",
+    "tags": ["beginner", "strength", "barbell"],
+    "affiliate": false
+  },
+  {
+    "title": "Reddit r/Fitness Wiki",
+    "description": "Community-driven fitness resource with programs, nutrition guides, and FAQs.",
+    "url": "https://thefitness.wiki/",
+    "category": "Education",
+    "tags": ["beginner", "general", "nutrition"],
+    "affiliate": false
+  },
+  {
+    "title": "Bodyweight Fitness Recommended Routine",
+    "description": "Progressive calisthenics program for building strength with minimal equipment.",
+    "url": "https://www.reddit.com/r/bodyweightfitness/wiki/kb/recommended_routine",
+    "category": "Programs",
+    "tags": ["beginner", "bodyweight", "home"],
+    "affiliate": false
+  },
+  {
+    "title": "ExRx Exercise Directory",
+    "description": "Database of exercises with detailed instructions, animations, and muscle group info.",
+    "url": "https://exrx.net/Lists/Directory",
+    "category": "Exercise Database",
+    "tags": ["reference", "exercises"],
+    "affiliate": false
+  },
+  {
+    "title": "MyFitnessPal Calorie Tracker",
+    "description": "Popular app for tracking calories, macros, and nutrition.",
+    "url": "https://www.myfitnesspal.com/",
+    "category": "Tools",
+    "tags": ["nutrition", "tracking", "app"],
+    "affiliate": true
+  },
+  {
+    "title": "Symmetric Strength",
+    "description": "Strength standards calculator to assess your lifting levels across exercises.",
+    "url": "https://symmetricstrength.com/",
+    "category": "Tools",
+    "tags": ["calculator", "strength", "tracking"],
+    "affiliate": false
+  },
+  {
+    "title": "TDEE Calculator (Sailrabbit)",
+    "description": "Comprehensive TDEE calculator with multiple formulas and activity level adjustments.",
+    "url": "https://www.sailrabbit.com/bmr/",
+    "category": "Tools",
+    "tags": ["calculator", "nutrition", "tdee"],
+    "affiliate": false
+  },
+  {
+    "title": "Stronger by Science Articles",
+    "description": "Evidence-based fitness and strength training articles from industry experts.",
+    "url": "https://www.strongerbyscience.com/articles/",
+    "category": "Education",
+    "tags": ["advanced", "science", "articles"],
+    "affiliate": false
+  },
+  {
+    "title": "Jeff Nippard YouTube Channel",
+    "description": "Science-based training and nutrition videos for natural bodybuilding.",
+    "url": "https://www.youtube.com/@JeffNippard",
+    "category": "Video Content",
+    "tags": ["education", "bodybuilding", "science"],
+    "affiliate": false
+  },
+  {
+    "title": "AthleanX YouTube Channel",
+    "description": "Physical therapy-based approach to training, injury prevention, and exercise form.",
+    "url": "https://www.youtube.com/@athleanx",
+    "category": "Video Content",
+    "tags": ["education", "injury prevention", "form"],
+    "affiliate": false
+  },
+  {
+    "title": "Renaissance Periodization",
+    "description": "Science-based training and nutrition education from PhD-level coaches.",
+    "url": "https://rpstrength.com/",
+    "category": "Education",
+    "tags": ["advanced", "science", "nutrition"],
+    "affiliate": true
+  },
+  {
+    "title": "Barbell Medicine",
+    "description": "Medical doctors providing evidence-based training and health information.",
+    "url": "https://www.barbellmedicine.com/",
+    "category": "Education",
+    "tags": ["science", "health", "medical"],
+    "affiliate": false
+  },
+  {
+    "title": "Examine.com Supplement Guide",
+    "description": "Evidence-based supplement information and research database.",
+    "url": "https://examine.com/",
+    "category": "Nutrition",
+    "tags": ["supplements", "research", "science"],
+    "affiliate": true
+  },
+  {
+    "title": "Couch to 5K (C25K)",
+    "description": "Beginner running program that gradually builds endurance over 9 weeks.",
+    "url": "https://www.c25k.com/",
+    "category": "Programs",
+    "tags": ["beginner", "cardio", "running"],
+    "affiliate": false
+  },
+  {
+    "title": "Tactical Barbell Program",
+    "description": "Strength and conditioning program designed for tactical athletes and general fitness.",
+    "url": "https://www.tacticalbarbell.com/",
+    "category": "Programs",
+    "tags": ["intermediate", "strength", "conditioning"],
+    "affiliate": true
+  },
+  {
+    "title": "GZCLP Program Overview",
+    "description": "Linear progression program balancing heavy compound lifts with volume work.",
+    "url": "http://swoleateveryheight.blogspot.com/2016/02/gzcl-applications-adaptations.html",
+    "category": "Programs",
+    "tags": ["intermediate", "strength", "powerlifting"],
+    "affiliate": false
+  },
+  {
+    "title": "nSuns Program Spreadsheet",
+    "description": "High-volume linear progression program with multiple weekly templates.",
+    "url": "https://liftvault.com/programs/strength/nsuns-program-spreadsheets/",
+    "category": "Programs",
+    "tags": ["intermediate", "strength", "volume"],
+    "affiliate": false
+  },
+  {
+    "title": "Wendler 5/3/1 Forever",
+    "description": "Popular intermediate program focusing on main lifts with customizable assistance work.",
+    "url": "https://www.jimwendler.com/",
+    "category": "Programs",
+    "tags": ["intermediate", "strength", "periodization"],
+    "affiliate": true
+  },
+  {
+    "title": "Alan Thrall YouTube Channel",
+    "description": "Practical strength training advice with focus on form and programming.",
+    "url": "https://www.youtube.com/@AlanThrall",
+    "category": "Video Content",
+    "tags": ["education", "strength", "form"],
+    "affiliate": false
+  },
+  {
+    "title": "Greg Nuckols Training Guides",
+    "description": "Free science-based training guides for squat, bench, and deadlift.",
+    "url": "https://www.strongerbyscience.com/train-smarter/",
+    "category": "Education",
+    "tags": ["science", "strength", "free"],
+    "affiliate": false
+  },
+  {
+    "title": "Mobility WOD Archive",
+    "description": "Daily mobility and movement quality exercises for injury prevention.",
+    "url": "https://www.youtube.com/@sanfranciscocrossfit",
+    "category": "Video Content",
+    "tags": ["mobility", "recovery", "injury prevention"],
+    "affiliate": false
+  },
+  {
+    "title": "Cronometer Nutrition Tracker",
+    "description": "Detailed micronutrient tracking app with comprehensive food database.",
+    "url": "https://cronometer.com/",
+    "category": "Tools",
+    "tags": ["nutrition", "tracking", "app"],
+    "affiliate": true
+  },
+  {
+    "title": "Juggernaut Training Systems",
+    "description": "Advanced powerlifting and strength training programs and education.",
+    "url": "https://www.jtsstrength.com/",
+    "category": "Programs",
+    "tags": ["advanced", "powerlifting", "strength"],
+    "affiliate": false
+  },
+  {
+    "title": "Form Check Friday (Reddit)",
+    "description": "Weekly thread for getting feedback on exercise form from experienced lifters.",
+    "url": "https://www.reddit.com/r/Fitness/search?q=flair%3AForm",
+    "category": "Community",
+    "tags": ["form", "community", "feedback"],
+    "affiliate": false
+  },
+  {
+    "title": "Precision Nutrition Calculator",
+    "description": "Macro calculator with customizable goals for muscle gain or fat loss.",
+    "url": "https://www.precisionnutrition.com/",
+    "category": "Tools",
+    "tags": ["nutrition", "calculator", "macros"],
+    "affiliate": true
+  },
+  {
+    "title": "Yoga with Adriene",
+    "description": "Beginner-friendly yoga videos for flexibility, mobility, and recovery.",
+    "url": "https://www.youtube.com/@yogawithadriene",
+    "category": "Video Content",
+    "tags": ["yoga", "flexibility", "recovery"],
+    "affiliate": false
+  },
+  {
+    "title": "FitNotes Workout Tracker",
+    "description": "Simple and effective workout logging app with exercise database.",
+    "url": "https://www.fitnotes.app/",
+    "category": "Tools",
+    "tags": ["tracking", "app", "logging"],
+    "affiliate": false
+  },
+  {
+    "title": "Protein Content Guide",
+    "description": "Visual guide to protein content in common foods for meal planning.",
+    "url": "https://www.healthline.com/nutrition/high-protein-foods",
+    "category": "Nutrition",
+    "tags": ["nutrition", "protein", "reference"],
+    "affiliate": false
+  },
+  {
+    "title": "Rogue Fitness Equipment",
+    "description": "High-quality home gym equipment including barbells, racks, and accessories.",
+    "url": "https://www.roguefitness.com/",
+    "category": "Equipment",
+    "tags": ["equipment", "home gym", "quality"],
+    "affiliate": true
+  }
+]
