@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react';
 import { Box, Typography, Card, CardContent, Grid, LinearProgress } from '@mui/material';
-import { WorkoutWeek } from '@/types/workout';
+import { WorkoutWeek, Section, Exercise } from '@/types/workout';
 
 interface WorkoutAnalyticsProps {
   week: WorkoutWeek;
@@ -23,8 +23,8 @@ export default function WorkoutAnalytics({ week }: WorkoutAnalyticsProps) {
     };
 
     workingDays.forEach((day) => {
-      day.sections.forEach((section) => {
-        section.exercises.forEach((ex) => {
+      day.sections.forEach((section: Section) => {
+        section.exercises.forEach((ex: Exercise) => {
           ex.sets.forEach((s) => {
             totalSets += s.sets;
           });
@@ -34,7 +34,7 @@ export default function WorkoutAnalytics({ week }: WorkoutAnalyticsProps) {
 
     // Simplified type breakdown (would need exercise data to be accurate)
     workingDays.forEach((day) => {
-      day.sections.forEach((section) => {
+      day.sections.forEach((section: Section) => {
         if (section.name.toLowerCase().includes('push') || section.name.toLowerCase().includes('chest')) {
           typeBreakdown.push += section.exercises.length;
         } else if (section.name.toLowerCase().includes('pull') || section.name.toLowerCase().includes('back')) {
@@ -52,7 +52,7 @@ export default function WorkoutAnalytics({ week }: WorkoutAnalyticsProps) {
       restDays: days.length - workingDays.length,
       totalSets,
       totalExercises: workingDays.reduce(
-        (sum, day) => sum + day.sections.reduce((s, sec) => s + sec.exercises.length, 0),
+        (sum, day) => sum + day.sections.reduce((s: number, sec: Section) => s + sec.exercises.length, 0),
         0
       ),
       typeBreakdown,
