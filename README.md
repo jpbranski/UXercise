@@ -1,463 +1,246 @@
-# UXercise 🏋️
+# UXercise
 
-**Smart Strength Training for Everyone**
+**Beginner-friendly fitness tools, built with UX in mind**
 
-UXercise is a production-quality, mobile-first fitness web application designed for strength training enthusiasts—from novices to semi-serious lifters. Built with modern web technologies, it offers comprehensive workout tracking, program building, and progressive overload analytics.
+UXercise is a frontend-only fitness resource platform designed to make strength training information and tools accessible, understandable, and actionable for beginners. No backend, no database, no user accounts—just simple, practical tools and educational content.
 
----
+## Features
 
-## 🚀 Features
+- **Fitness Calculators**: BMI, TDEE/BMR, 1RM, plate loading, and RPE calculators
+- **Resource Hub**: Curated links to 30+ training programs, tools, and educational content
+- **Articles**: Educational guides covering strength training basics, nutrition, and recovery
+- **Marketplace**: Curated fitness equipment and products with transparent affiliate marking
+- **Demo Workout Planner**: Prototype workout planning tool with local storage (visit `/demo`)
 
-### Core Functionality
+## Tech Stack
 
-- **📅 Program Builder**: Create weekly or bi-weekly (A/B week) training programs with customizable structure
-  - Organize by Week → Day → Section → Exercise
-  - Support for different training splits (Push/Pull/Legs, Upper/Lower, etc.)
-  - Set target sets, reps, RPE, and notes for each exercise
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript
+- **UI Library**: Material-UI (MUI) v6
+- **Styling**: CSS Modules + MUI theme
+- **Content**: Markdown files with frontmatter (using gray-matter)
+- **Storage**: localStorage (for demo workout planner only)
 
-- **💪 Workout Logger**: Quick and efficient workout logging
-  - Log sets with weight, reps, and equipment
-  - Distinguish warmup vs. working sets
-  - Track perceived intensity (1-5 scale) per session
-  - Free logging or program-based tracking
-
-- **📊 Analytics & Progressive Overload**:
-  - Body weight tracking over time
-  - Weekly volume calculations per exercise
-  - Progressive overload indicators (volume trends)
-  - 1RM estimates (Epley & Brzycki formulas)
-  - Visual charts and trend analysis
-
-- **🏃 Exercise Library**:
-  - Global exercise database covering all major muscle groups
-  - Create custom exercises specific to your needs
-  - Filter by muscle group, equipment, and tags
-
-- **👨‍🏫 Coach Features**:
-  - Coach-client relationships
-  - View and edit client programs
-  - Access client workout history and analytics
-  - Change log for all modifications
-
-- **📥 Data Export**:
-  - Export all your data as JSON
-  - Complete workout history, programs, and custom exercises
-
-### Technical Highlights
-
-- **Dark-Only UI** with fox-fur orange (#E25822) accent
-- **Mobile-First** responsive design
-- **WCAG 2.1 AA** accessibility compliant
-- **OAuth Authentication** (Google, Microsoft, Discord)
-- **Role-Based Access Control** (User, Coach, Admin)
-- **Rate Limiting** for API protection
-- **Change Log** for audit trails
-- **Comprehensive Testing** (Jest + Playwright)
-
----
-
-## 🛠️ Tech Stack
-
-| Category | Technology |
-|----------|-----------|
-| **Framework** | Next.js 15 (App Router) + TypeScript |
-| **UI** | Material UI (MUI) + MUI Icons |
-| **Styling** | MUI Theme System (SX/Styled API) |
-| **Font** | Inter (Google Fonts) |
-| **Database** | PostgreSQL (Vercel Postgres / Prisma Postgres) |
-| **ORM** | Prisma |
-| **Authentication** | NextAuth.js (Auth.js v5) |
-| **Validation** | Zod |
-| **State** | React Hooks + Server Components |
-| **Linting/Formatting** | Biome |
-| **Testing** | Jest + React Testing Library + Playwright |
-| **Charts** | Recharts |
-| **Hosting** | Vercel |
-
----
-
-## 📦 Installation & Setup
+## Getting Started
 
 ### Prerequisites
 
-- Node.js 20+ and npm 10+
-- PostgreSQL database (Vercel Postgres recommended)
-- OAuth credentials (Google, Microsoft, Discord)
+- Node.js 20+ and npm
 
-### 1. Clone and Install
-
-```bash
-git clone <your-repo-url>
-cd UXercise
-npm install
-```
-
-### 2. Environment Variables
-
-Create a `.env.local` file in the root directory:
-
-```bash
-# Database
-DATABASE_URL="postgresql://user:password@localhost:5432/uxercise"
-PRISMA_DATABASE_URL="postgresql://user:password@localhost:5432/uxercise"
-
-# NextAuth
-NEXTAUTH_SECRET="your-secret-here" # Generate with: openssl rand -base64 32
-NEXTAUTH_URL="http://localhost:3000"
-
-# OAuth Providers
-GOOGLE_CLIENT_ID="your-google-client-id"
-GOOGLE_CLIENT_SECRET="your-google-client-secret"
-
-MICROSOFT_CLIENT_ID="your-microsoft-client-id"
-MICROSOFT_CLIENT_SECRET="your-microsoft-client-secret"
-MICROSOFT_TENANT_ID="common"
-
-DISCORD_CLIENT_ID="your-discord-client-id"
-DISCORD_CLIENT_SECRET="your-discord-client-secret"
-
-# Analytics (Optional)
-NEXT_PUBLIC_GA_MEASUREMENT_ID=""
-NEXT_PUBLIC_ADSENSE_CLIENT_ID=""
-```
-
-See `.env.example` for a complete template.
-
-### 3. Database Setup
-
-```bash
-# Generate Prisma client
-npm run db:generate
-
-# Run migrations
-npm run db:migrate
-
-# Seed database with demo data
-npm run db:seed
-```
-
-### 4. Run Development Server
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### 5. Run Tests
-
-```bash
-# Unit/component tests
-npm test
-
-# E2E tests (requires dev server running)
-npm run test:e2e
-
-# Linting
-npm run lint
-```
-
----
-
-## 🏗️ Project Structure
-
-```
-UXercise/
-├── e2e/                      # Playwright E2E tests
-├── prisma/
-│   ├── schema.prisma         # Prisma schema
-│   └── seed.ts               # Database seed script
-├── public/
-│   ├── robots.txt            # SEO: robots file
-│   └── manifest.json         # PWA manifest
-├── src/
-│   ├── app/                  # Next.js App Router
-│   │   ├── api/              # API routes
-│   │   │   ├── auth/         # NextAuth handlers
-│   │   │   ├── exercises/    # Exercise CRUD
-│   │   │   ├── programs/     # Program CRUD
-│   │   │   ├── workouts/     # Workout logging
-│   │   │   ├── export/       # Data export
-│   │   │   └── user/         # User profile
-│   │   ├── dashboard/        # User dashboard page
-│   │   ├── analytics/        # Analytics page
-│   │   ├── login/            # Login page
-│   │   ├── layout.tsx        # Root layout
-│   │   ├── page.tsx          # Landing page
-│   │   └── sitemap.ts        # Dynamic sitemap
-│   ├── components/
-│   │   ├── analytics/        # Chart components
-│   │   └── layout/           # AppShell, navigation
-│   ├── lib/
-│   │   ├── analytics/        # Progressive overload calculations
-│   │   ├── api/              # API helpers (auth, rate limit, errors)
-│   │   ├── auth.ts           # NextAuth configuration
-│   │   └── db.ts             # Prisma client singleton
-│   ├── theme/
-│   │   └── uxerciseTheme.ts  # MUI dark theme
-│   └── env.ts                # Environment validation (Zod)
-├── .env.example              # Environment template
-├── biome.json                # Biome configuration
-├── jest.config.ts            # Jest configuration
-├── playwright.config.ts      # Playwright configuration
-├── next.config.ts            # Next.js configuration
-├── tsconfig.json             # TypeScript configuration
-└── package.json              # Dependencies and scripts
-```
-
----
-
-## 🎨 Design System
-
-### Theme
-
-- **Mode**: Dark only
-- **Primary Color**: Fox-fur orange (`#E25822`)
-- **Background**: Very dark (`#050608`)
-- **Paper**: Slightly lighter dark (`#0E1117`)
-- **Text Primary**: Off-white (`#E8E8E8`)
-- **Text Secondary**: Muted gray (`#9E9E9E`)
-
-### Typography
-
-- **Font**: Inter
-- **Scale**: h1-h6, body1-2, button, caption
-
-### Components
-
-- **Border Radius**: 12px (rounded corners)
-- **Shadows**: Tasteful, light shadows on cards/modals
-- **Focus Outlines**: Visible 2px fox-fur orange outlines for accessibility
-
----
-
-## 📊 Domain Model
-
-### Users & Roles
-
-- **USER**: Regular users who can create programs and log workouts
-- **COACH**: Can view/edit client data via coach-client relationships
-- **ADMIN**: Full access to all users and data
-
-### Core Entities
-
-1. **Program**: Container for weekly/bi-weekly training plans
-2. **ProgramWeek**: Represents weeks (A/B for bi-weekly)
-3. **ProgramDay**: Training days within a week
-4. **ProgramSection**: Sections within a day (e.g., "Warm-up", "Main Lifts")
-5. **ProgramExercise**: Exercises within a section with target sets/reps/RPE
-6. **Exercise**: Global or user-created exercises
-7. **WorkoutSession**: Logged workout with date, intensity, notes
-8. **WorkoutSet**: Individual sets logged in a session
-9. **BodyWeightEntry**: Body weight measurements over time
-10. **ChangeLogEntry**: Audit trail for all data mutations
-
----
-
-## 🔐 Authentication & Authorization
-
-### OAuth Providers
-
-- Google
-- Microsoft (Azure AD)
-- Discord
-
-### Role-Based Access Control (RBAC)
-
-- **Users**: Can only access their own data
-- **Coaches**: Can access their clients' data (via CoachUserRelationship)
-- **Admins**: Can access all user data
-
-### API Security
-
-- All API routes protected with `withAuth` middleware
-- Rate limiting via token bucket algorithm
-- Input validation with Zod schemas
-- Change log for audit trails
-
----
-
-## 📈 Analytics & Progressive Overload
-
-The analytics module (`src/lib/analytics/progressiveOverload.ts`) provides:
-
-- **Volume Calculation**: `weight × reps` per set (excluding warmups)
-- **Weekly Volume Trends**: Aggregate volume per exercise per week
-- **Progressive Overload Detection**: Compare current week vs. previous week
-- **1RM Estimation**: Epley and Brzycki formulas
-- **Muscle Group Volume**: Total volume per primary muscle group
-
-### Usage Example
-
-```typescript
-import { calculateWeeklyVolume } from '@/lib/analytics/progressiveOverload';
-
-const weeklyVolumes = calculateWeeklyVolume(setsWithWorkoutSessions);
-// Returns array of weekly volume data with percent changes
-```
-
----
-
-## 🧪 Testing
-
-### Unit Tests (Jest)
-
-Located in `src/lib/analytics/progressiveOverload.test.ts`
-
-```bash
-npm test
-```
-
-### E2E Tests (Playwright)
-
-Located in `e2e/landing.spec.ts`
-
-```bash
-# Run in UI mode
-npm run test:e2e:ui
-
-# Run headless
-npm run test:e2e
-```
-
----
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-
-1. **Push to GitHub**:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git remote add origin <your-repo-url>
-   git push -u origin main
-   ```
-
-2. **Deploy to Vercel**:
-   - Import project from GitHub
-   - Configure environment variables (all vars from `.env.local`)
-   - Deploy
-
-3. **Database Migrations**:
-   - Vercel automatically runs `npm run postinstall` (which runs `prisma generate`)
-   - For migrations, use Prisma Migrate or Prisma DB Push:
-     ```bash
-     npx prisma migrate deploy
-     ```
-
-4. **Seed Production Database** (optional):
-   ```bash
-   npm run db:seed
-   ```
-
-### Environment Variables on Vercel
-
-Add all variables from `.env.example` in Vercel dashboard:
-- Database URLs
-- NextAuth secret & URL
-- OAuth credentials (production keys)
-- Analytics IDs (optional)
-
----
-
-## 🛣️ API Routes
-
-### Authentication
-- `POST /api/auth/signin` - Sign in with OAuth
-- `POST /api/auth/signout` - Sign out
-
-### User
-- `GET /api/user` - Get current user profile
-
-### Exercises
-- `GET /api/exercises` - List exercises (global + user's custom)
-- `POST /api/exercises` - Create custom exercise
-
-### Programs
-- `GET /api/programs` - List user's programs
-- `POST /api/programs` - Create new program
-
-### Workouts
-- `GET /api/workouts` - List workout sessions
-- `POST /api/workouts` - Create workout session with sets
-
-### Export
-- `GET /api/export` - Export user data as JSON
-
----
-
-## 🎯 Future Enhancements
-
-- **Tauri Desktop App**: Wrap as native desktop app
-- **Additional Charts**: Strength curves, periodization views
-- **Social Features**: Share workouts, follow friends
-- **Media Uploads**: Exercise form videos
-- **Device Integrations**: Smart watch sync, barbell sensors
-- **Advanced Analytics**: Machine learning for plateau detection
-- **Mobile App**: React Native version
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these guidelines:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Development Workflow
+### Installation
 
 ```bash
 # Install dependencies
 npm install
 
-# Run linter
-npm run lint
+# Run development server
+npm run dev
 
-# Fix linting issues
-npm run lint:fix
+# Build for production
+npm run build
 
-# Run tests
-npm test
-
-# Run E2E tests
-npm run test:e2e
-
-# Type check
-npm run type-check
+# Start production server
+npm start
 ```
 
+The application will be available at [http://localhost:3000](http://localhost:3000).
+
+## Project Structure
+
+```
+UXercise/
+├── app/                    # Next.js App Router pages
+│   ├── layout.tsx         # Root layout with MUI theme
+│   ├── page.tsx           # Home page
+│   ├── about/             # About page
+│   ├── resources/         # Resource hub
+│   ├── articles/          # Article index + [slug] dynamic routes
+│   ├── marketplace/       # Product marketplace
+│   ├── calculators/       # Fitness calculators
+│   ├── contact/           # Contact page
+│   ├── privacy-policy/    # Privacy policy
+│   ├── terms/             # Terms of service
+│   ├── accessibility/     # Accessibility statement
+│   └── demo/              # Hidden workout planner prototype
+├── components/            # Reusable React components
+│   ├── Header.tsx         # Main navigation header
+│   └── demo/              # Demo planner components
+├── content/               # Markdown content
+│   └── articles/          # Article markdown files
+├── data/                  # JSON data files
+│   ├── resources.json     # Resource links
+│   ├── marketplace.json   # Marketplace products
+│   └── exercises.json     # Exercise library (60 exercises)
+├── hooks/                 # Custom React hooks
+│   └── useWorkoutData.ts  # localStorage hook for demo planner
+├── lib/                   # Utility libraries
+│   └── articles.ts        # Article loading and parsing
+├── public/                # Static assets
+│   ├── logo.svg           # UXercise logo
+│   ├── robots.txt         # SEO robots file
+│   └── images/            # Placeholder product images
+├── theme/                 # MUI theme configuration
+│   └── theme.ts           # Custom dark theme with orange/purple
+└── types/                 # TypeScript type definitions
+    └── workout.ts         # Workout data types
+```
+
+## Content Management
+
+### Adding Articles
+
+1. Create a new `.md` file in `/content/articles/`
+2. Add frontmatter:
+
+```md
+---
+slug: "your-article-slug"
+title: "Your Article Title"
+description: "Brief description of the article"
+tags: ["tag1", "tag2"]
+publishedAt: "2025-01-15"
 ---
 
-## 📄 License
+Your markdown content here...
+```
 
-This project is licensed under the MIT License.
+3. The article will automatically appear in the articles index
+
+### Adding Resources
+
+Edit `/data/resources.json`:
+
+```json
+{
+  "title": "Resource Name",
+  "description": "Description of the resource",
+  "url": "https://example.com",
+  "category": "Programs",
+  "tags": ["beginner", "strength"],
+  "affiliate": false
+}
+```
+
+**Categories**: Programs, Education, Tools, Video Content, Community, Equipment, Nutrition
+
+### Adding Marketplace Items
+
+Edit `/data/marketplace.json`:
+
+```json
+{
+  "name": "Product Name",
+  "description": "Product description",
+  "url": "https://example.com/product",
+  "affiliate": true,
+  "image": "/images/placeholder-image.svg",
+  "category": "Equipment",
+  "tags": ["home gym", "barbell"]
+}
+```
+
+**Categories**: Equipment, Accessories, Recovery
+
+### Adding Exercises
+
+Edit `/data/exercises.json`:
+
+```json
+{
+  "id": "exercise_id",
+  "name": "Exercise Name",
+  "type": "push",
+  "muscleGroup": "chest",
+  "equipment": ["barbell", "bench"],
+  "difficulty": "beginner"
+}
+```
+
+**Types**: push, pull, legs, core, cardio
+**Difficulty**: beginner, intermediate, advanced
+
+## Customization
+
+### Theme Colors
+
+Edit `/theme/theme.ts` to customize the color palette:
+
+- **Primary (Orange)**: `#FF6B35` - Used for CTAs and highlights
+- **Secondary (Purple)**: `#9D4EDD` - Used for accents and selection states
+- **Background**: `#121212` - Near-black dark background
+- **Text**: `#F5F5F5` - Off-white for readability
+
+### Logo
+
+Replace `/public/logo.svg` with your own logo. The logo should:
+- Have a dark background
+- Work well at 120×40px
+- Be readable at small sizes
+
+## Demo Workout Planner
+
+The workout planner at `/demo` is a prototype that demonstrates:
+
+- **Single week** or **A/B week** planning modes
+- Day-by-day workout organization
+- Off-day toggling
+- Local storage persistence
+- Mobile-first phone frame UI
+
+**Note**: This is intentionally hidden from main navigation. Access directly at `/demo`.
+
+### Resetting Demo Data
+
+Click the reset button (🔄) in the demo planner header, or clear browser localStorage.
+
+## Deployment
+
+### Vercel (Recommended)
+
+```bash
+npm run build
+```
+
+Deploy to Vercel with zero configuration. The site is fully static and can also be hosted on:
+- Netlify
+- GitHub Pages
+- Any static hosting service
+
+### Build Output
+
+The build creates a static export suitable for any hosting provider.
+
+## Privacy & Data
+
+UXercise does not:
+- Collect user data
+- Use analytics or tracking
+- Require user accounts
+- Store data on servers
+
+The demo workout planner uses browser localStorage exclusively. All data remains on the user's device.
+
+## License
+
+This project is open source and available for educational purposes.
+
+## Contributing
+
+Contributions are welcome! Please ensure:
+- New articles follow the frontmatter format
+- JSON data is properly formatted
+- Accessibility standards (WCAG AA) are maintained
+- Code follows TypeScript best practices
+
+## Disclaimer
+
+UXercise provides general educational information only. It is not medical advice, personal training, or professional coaching. Always consult qualified healthcare and fitness professionals before beginning any exercise program.
+
+## Contact
+
+- Email: contact@uxercise.com
+- GitHub: github.com/uxercise
 
 ---
 
-## 🙏 Acknowledgments
-
-- **Next.js Team**: For an incredible framework
-- **Prisma Team**: For the best TypeScript ORM
-- **MUI Team**: For beautiful, accessible components
-- **NextAuth.js**: For painless authentication
-- **Vercel**: For seamless hosting
-
----
-
-## 📞 Support
-
-For issues or questions:
-
-- Open an issue on GitHub
-- Check the documentation in `/docs`
-- Contact: support@uxercise.com (if applicable)
-
----
-
-**Built with 💪 for lifters, by lifters.**
+Built with ❤️ for the fitness community
