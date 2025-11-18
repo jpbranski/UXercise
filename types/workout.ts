@@ -4,10 +4,18 @@ export interface ExerciseSet {
   weight?: number;
 }
 
+export interface SetDetail {
+  reps: number;
+  weight?: number;
+  restSeconds?: number; // optional override per set
+}
+
 export interface Exercise {
   id: string;
   name: string;
-  sets: ExerciseSet[];
+  sets: ExerciseSet[]; // legacy format
+  restSeconds?: number; // default rest timer after each set in seconds
+  perSet?: SetDetail[]; // new detailed format with per-set data
 }
 
 export interface StandardSection {

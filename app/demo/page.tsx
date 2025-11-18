@@ -286,16 +286,51 @@ export default function DemoPage() {
                                 </Box>
                               </Box>
 
-                              {section.exercises.map((exercise, exIdx) => (
-                                <Box key={exIdx} sx={{ mb: 1 }}>
-                                  <Typography variant="body2" sx={{ fontWeight: 500 }}>
-                                    {exercise.name}
-                                  </Typography>
-                                  <Typography variant="caption" color="text.secondary">
-                                    {exercise.sets.map((s) => `${s.sets}×${s.reps}${s.weight ? ` @ ${s.weight} lbs` : ''}`).join(', ')}
-                                  </Typography>
-                                </Box>
-                              ))}
+                              {section.exercises.map((exercise, exIdx) => {
+                                // Format exercise display
+                                let displayText = '';
+                                let restInfo = '';
+
+                                if (exercise.perSet && exercise.perSet.length > 0) {
+                                  // New format with perSet
+                                  const repsDisplay = exercise.perSet.map((s) => s.reps).join('/');
+                                  const weights = exercise.perSet.map((s) => s.weight).filter((w) => w !== undefined);
+                                  const weightDisplay = weights.length > 0 ? ` @${weights[0]}lb` : '';
+
+                                  const restTimes = exercise.perSet.map((s) => s.restSeconds ?? exercise.restSeconds ?? 60);
+                                  const allSameRest = restTimes.every((r) => r === restTimes[0]);
+                                  const restDisplay = allSameRest
+                                    ? `${restTimes[0]}s rest`
+                                    : `${restTimes.join('/')}s rest`;
+
+                                  displayText = `${exercise.perSet.length} sets: ${repsDisplay} reps${weightDisplay}`;
+                                  restInfo = restDisplay;
+                                } else {
+                                  // Legacy format
+                                  displayText = exercise.sets
+                                    .map((s) => `${s.sets}×${s.reps}${s.weight ? ` @ ${s.weight} lbs` : ''}`)
+                                    .join(', ');
+                                  if (exercise.restSeconds) {
+                                    restInfo = `${exercise.restSeconds}s rest`;
+                                  }
+                                }
+
+                                return (
+                                  <Box key={exIdx} sx={{ mb: 1 }}>
+                                    <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                                      {exercise.name}
+                                    </Typography>
+                                    <Typography variant="caption" color="text.secondary">
+                                      {displayText}
+                                    </Typography>
+                                    {restInfo && (
+                                      <Typography variant="caption" color="primary.main" sx={{ display: 'block' }}>
+                                        Rest: {restInfo}
+                                      </Typography>
+                                    )}
+                                  </Box>
+                                );
+                              })}
 
                               {section.type === 'interval' && (
                                 <Typography variant="caption" color="secondary.main">
