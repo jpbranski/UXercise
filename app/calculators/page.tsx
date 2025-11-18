@@ -5,9 +5,6 @@ import {
   Container,
   Typography,
   Box,
-  Card,
-  CardContent,
-  TextField,
   Button,
   Grid,
   Alert,
@@ -19,8 +16,13 @@ import {
   ToggleButtonGroup,
   Divider,
 } from '@mui/material';
+import { UnitProvider, useUnits } from '@/contexts/UnitContext';
+import CollapsibleCalculator from '@/components/CollapsibleCalculator';
+import StyledNumberInput from '@/components/StyledNumberInput';
 
-export default function Calculators() {
+function CalculatorsContent() {
+  const { units, setUnits } = useUnits();
+
   return (
     <Container maxWidth="lg">
       <Box sx={{ py: 6 }}>
@@ -37,30 +39,93 @@ export default function Calculators() {
           professional before making decisions about your health or fitness.
         </Alert>
 
-        <Grid container spacing={4}>
-          <Grid item xs={12}>
+        {/* Global Unit Toggle */}
+        <Box
+          sx={{
+            mb: 4,
+            p: 3,
+            backgroundColor: 'background.paper',
+            borderRadius: 2,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: 2,
+          }}
+        >
+          <Typography variant="body1" sx={{ fontWeight: 600 }}>
+            Unit System:
+          </Typography>
+          <ToggleButtonGroup
+            value={units}
+            exclusive
+            onChange={(_, newUnit) => newUnit && setUnits(newUnit)}
+            sx={{
+              '& .MuiToggleButton-root': {
+                px: 3,
+              },
+            }}
+          >
+            <ToggleButton value="imperial">Imperial (lbs, inches)</ToggleButton>
+            <ToggleButton value="metric">Metric (kg, cm)</ToggleButton>
+          </ToggleButtonGroup>
+        </Box>
+
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+          <CollapsibleCalculator
+            id="bmi"
+            title="BMI Calculator"
+            subtitle="Calculate your Body Mass Index"
+          >
             <BMICalculator />
-          </Grid>
-          <Grid item xs={12}>
+          </CollapsibleCalculator>
+
+          <CollapsibleCalculator
+            id="tdee"
+            title="TDEE / BMR Calculator"
+            subtitle="Estimate your daily caloric needs"
+          >
             <TDEECalculator />
-          </Grid>
-          <Grid item xs={12}>
+          </CollapsibleCalculator>
+
+          <CollapsibleCalculator
+            id="onerm"
+            title="One Rep Max (1RM) Calculator"
+            subtitle="Estimate your maximum lift capacity"
+          >
             <OneRMCalculator />
-          </Grid>
-          <Grid item xs={12}>
+          </CollapsibleCalculator>
+
+          <CollapsibleCalculator
+            id="plates"
+            title="Plate Loading Calculator"
+            subtitle="Figure out which plates to load on your barbell"
+          >
             <PlateCalculator />
-          </Grid>
-          <Grid item xs={12}>
+          </CollapsibleCalculator>
+
+          <CollapsibleCalculator
+            id="rpe"
+            title="RPE to Intensity Calculator"
+            subtitle="Convert Rate of Perceived Exertion to training intensity"
+          >
             <RPECalculator />
-          </Grid>
-        </Grid>
+          </CollapsibleCalculator>
+        </Box>
+
+        <Box sx={{ mt: 4, p: 2, backgroundColor: 'rgba(255, 107, 53, 0.05)', borderRadius: 2 }}>
+          <Typography variant="body2" color="text.secondary">
+            <strong>Tip:</strong> You can link directly to any calculator using URL anchors, e.g.,{' '}
+            <code>/calculators#bmi</code> or <code>/calculators#tdee</code>
+          </Typography>
+        </Box>
       </Box>
     </Container>
   );
 }
 
 function BMICalculator() {
-  const [unit, setUnit] = useState<'metric' | 'imperial'>('imperial');
+  const { units } = useUnits();
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
   const [bmi, setBMI] = useState<number | null>(null);
@@ -75,7 +140,7 @@ function BMICalculator() {
     }
 
     let bmiValue: number;
-    if (unit === 'metric') {
+    if (units === 'metric') {
       // BMI = kg / (m^2)
       bmiValue = w / ((h / 100) ** 2);
     } else {
@@ -94,59 +159,46 @@ function BMICalculator() {
   };
 
   return (
-    <Card>
-      <CardContent>
-        <Typography variant="h5" sx={{ mb: 3, fontWeight: 600 }}>
-          1. BMI Calculator
-        </Typography>
-
-        <ToggleButtonGroup
-          value={unit}
-          exclusive
-          onChange={(_, newUnit) => newUnit && setUnit(newUnit)}
-          sx={{ mb: 3 }}
-        >
-          <ToggleButton value="imperial">Imperial</ToggleButton>
-          <ToggleButton value="metric">Metric</ToggleButton>
-        </ToggleButtonGroup>
-
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              label={unit === 'metric' ? 'Height (cm)' : 'Height (inches)'}
-              value={height}
-              onChange={(e) => setHeight(e.target.value)}
-              type="number"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              label={unit === 'metric' ? 'Weight (kg)' : 'Weight (lbs)'}
-              value={weight}
-              onChange={(e) => setWeight(e.target.value)}
-              type="number"
-            />
-          </Grid>
+    <Box>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+          <StyledNumberInput
+            fullWidth
+            label={units === 'metric' ? 'Height (cm)' : 'Height (inches)'}
+            value={height}
+            onChange={(e) => setHeight(e.target.value)}
+            step={1}
+            min={0}
+          />
         </Grid>
+        <Grid item xs={12} sm={6}>
+          <StyledNumberInput
+            fullWidth
+            label={units === 'metric' ? 'Weight (kg)' : 'Weight (lbs)'}
+            value={weight}
+            onChange={(e) => setWeight(e.target.value)}
+            step={units === 'metric' ? 0.5 : 1}
+            min={0}
+          />
+        </Grid>
+      </Grid>
 
-        <Button variant="contained" onClick={calculate} sx={{ mt: 2 }}>
-          Calculate BMI
-        </Button>
+      <Button variant="contained" onClick={calculate} sx={{ mt: 2 }}>
+        Calculate BMI
+      </Button>
 
-        {bmi !== null && (
-          <Alert severity={getCategory(bmi).color as any} sx={{ mt: 3 }}>
-            <Typography variant="h6">BMI: {bmi}</Typography>
-            <Typography>Category: {getCategory(bmi).text}</Typography>
-          </Alert>
-        )}
-      </CardContent>
-    </Card>
+      {bmi !== null && (
+        <Alert severity={getCategory(bmi).color as any} sx={{ mt: 3 }}>
+          <Typography variant="h6">BMI: {bmi}</Typography>
+          <Typography>Category: {getCategory(bmi).text}</Typography>
+        </Alert>
+      )}
+    </Box>
   );
 }
 
 function TDEECalculator() {
+  const { units } = useUnits();
   const [age, setAge] = useState('');
   const [sex, setSex] = useState('male');
   const [height, setHeight] = useState('');
@@ -172,12 +224,15 @@ function TDEECalculator() {
       return;
     }
 
-    // Mifflin-St Jeor Equation (using imperial units)
+    // Mifflin-St Jeor Equation
     let bmr: number;
+    let weightKg = units === 'metric' ? w : w * 0.453592;
+    let heightCm = units === 'metric' ? h : h * 2.54;
+
     if (sex === 'male') {
-      bmr = 10 * (w * 0.453592) + 6.25 * (h * 2.54) - 5 * a + 5;
+      bmr = 10 * weightKg + 6.25 * heightCm - 5 * a + 5;
     } else {
-      bmr = 10 * (w * 0.453592) + 6.25 * (h * 2.54) - 5 * a - 161;
+      bmr = 10 * weightKg + 6.25 * heightCm - 5 * a - 161;
     }
 
     const tdee = bmr * activityMultipliers[activity as keyof typeof activityMultipliers].value;
@@ -189,82 +244,81 @@ function TDEECalculator() {
   };
 
   return (
-    <Card>
-      <CardContent>
-        <Typography variant="h5" sx={{ mb: 3, fontWeight: 600 }}>
-          2. TDEE / BMR Calculator
-        </Typography>
-
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              label="Age (years)"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
-              type="number"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <FormControl fullWidth>
-              <InputLabel>Sex</InputLabel>
-              <Select value={sex} label="Sex" onChange={(e) => setSex(e.target.value)}>
-                <MenuItem value="male">Male</MenuItem>
-                <MenuItem value="female">Female</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              label="Height (inches)"
-              value={height}
-              onChange={(e) => setHeight(e.target.value)}
-              type="number"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              label="Weight (lbs)"
-              value={weight}
-              onChange={(e) => setWeight(e.target.value)}
-              type="number"
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <FormControl fullWidth>
-              <InputLabel>Activity Level</InputLabel>
-              <Select value={activity} label="Activity Level" onChange={(e) => setActivity(e.target.value)}>
-                {Object.entries(activityMultipliers).map(([key, { label }]) => (
-                  <MenuItem key={key} value={key}>
-                    {label}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
+    <Box>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+          <StyledNumberInput
+            fullWidth
+            label="Age (years)"
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
+            step={1}
+            min={1}
+            max={120}
+          />
         </Grid>
+        <Grid item xs={12} sm={6}>
+          <FormControl fullWidth>
+            <InputLabel>Sex</InputLabel>
+            <Select value={sex} label="Sex" onChange={(e) => setSex(e.target.value)}>
+              <MenuItem value="male">Male</MenuItem>
+              <MenuItem value="female">Female</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <StyledNumberInput
+            fullWidth
+            label={units === 'metric' ? 'Height (cm)' : 'Height (inches)'}
+            value={height}
+            onChange={(e) => setHeight(e.target.value)}
+            step={1}
+            min={0}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <StyledNumberInput
+            fullWidth
+            label={units === 'metric' ? 'Weight (kg)' : 'Weight (lbs)'}
+            value={weight}
+            onChange={(e) => setWeight(e.target.value)}
+            step={units === 'metric' ? 0.5 : 1}
+            min={0}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <FormControl fullWidth>
+            <InputLabel>Activity Level</InputLabel>
+            <Select value={activity} label="Activity Level" onChange={(e) => setActivity(e.target.value)}>
+              {Object.entries(activityMultipliers).map(([key, { label }]) => (
+                <MenuItem key={key} value={key}>
+                  {label}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </Grid>
+      </Grid>
 
-        <Button variant="contained" onClick={calculate} sx={{ mt: 2 }}>
-          Calculate TDEE
-        </Button>
+      <Button variant="contained" onClick={calculate} sx={{ mt: 2 }}>
+        Calculate TDEE
+      </Button>
 
-        {result && (
-          <Alert severity="success" sx={{ mt: 3 }}>
-            <Typography variant="h6">BMR: {result.bmr} calories/day</Typography>
-            <Typography variant="h6">TDEE: {result.tdee} calories/day</Typography>
-            <Typography variant="body2" sx={{ mt: 1 }}>
-              BMR = calories burned at rest | TDEE = total daily calorie burn
-            </Typography>
-          </Alert>
-        )}
-      </CardContent>
-    </Card>
+      {result && (
+        <Alert severity="success" sx={{ mt: 3 }}>
+          <Typography variant="h6">BMR: {result.bmr} calories/day</Typography>
+          <Typography variant="h6">TDEE: {result.tdee} calories/day</Typography>
+          <Typography variant="body2" sx={{ mt: 1 }}>
+            BMR = calories burned at rest | TDEE = total daily calorie burn
+          </Typography>
+        </Alert>
+      )}
+    </Box>
   );
 }
 
 function OneRMCalculator() {
+  const { units } = useUnits();
   const [weight, setWeight] = useState('');
   const [reps, setReps] = useState('');
   const [oneRM, setOneRM] = useState<number | null>(null);
@@ -280,65 +334,72 @@ function OneRMCalculator() {
 
     // Epley formula: 1RM = weight × (1 + reps/30)
     const estimated1RM = w * (1 + r / 30);
-    setOneRM(Math.round(estimated1RM));
+    setOneRM(Math.round(estimated1RM * 10) / 10);
   };
 
   return (
-    <Card>
-      <CardContent>
-        <Typography variant="h5" sx={{ mb: 3, fontWeight: 600 }}>
-          3. One Rep Max (1RM) Calculator
-        </Typography>
-
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              label="Weight (lbs)"
-              value={weight}
-              onChange={(e) => setWeight(e.target.value)}
-              type="number"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              label="Reps performed"
-              value={reps}
-              onChange={(e) => setReps(e.target.value)}
-              type="number"
-              helperText="Works best with 1-12 reps"
-            />
-          </Grid>
+    <Box>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+          <StyledNumberInput
+            fullWidth
+            label={units === 'metric' ? 'Weight (kg)' : 'Weight (lbs)'}
+            value={weight}
+            onChange={(e) => setWeight(e.target.value)}
+            step={units === 'metric' ? 2.5 : 5}
+            min={0}
+          />
         </Grid>
+        <Grid item xs={12} sm={6}>
+          <StyledNumberInput
+            fullWidth
+            label="Reps performed"
+            value={reps}
+            onChange={(e) => setReps(e.target.value)}
+            step={1}
+            min={1}
+            max={12}
+            helperText="Works best with 1-12 reps"
+          />
+        </Grid>
+      </Grid>
 
-        <Button variant="contained" onClick={calculate} sx={{ mt: 2 }}>
-          Calculate 1RM
-        </Button>
+      <Button variant="contained" onClick={calculate} sx={{ mt: 2 }}>
+        Calculate 1RM
+      </Button>
 
-        {oneRM !== null && (
-          <Alert severity="success" sx={{ mt: 3 }}>
-            <Typography variant="h6">Estimated 1RM: {oneRM} lbs</Typography>
-            <Typography variant="body2">
-              This is an estimate based on the Epley formula. Actual 1RM may vary.
-            </Typography>
-          </Alert>
-        )}
-      </CardContent>
-    </Card>
+      {oneRM !== null && (
+        <Alert severity="success" sx={{ mt: 3 }}>
+          <Typography variant="h6">
+            Estimated 1RM: {oneRM} {units === 'metric' ? 'kg' : 'lbs'}
+          </Typography>
+          <Typography variant="body2">
+            This is an estimate based on the Epley formula. Actual 1RM may vary.
+          </Typography>
+        </Alert>
+      )}
+    </Box>
   );
 }
 
 function PlateCalculator() {
+  const { units } = useUnits();
   const [targetWeight, setTargetWeight] = useState('');
-  const [barWeight, setBarWeight] = useState('45');
+  const [barWeight, setBarWeight] = useState(units === 'metric' ? '20' : '45');
   const [result, setResult] = useState<string | null>(null);
 
-  const availablePlates = [45, 35, 25, 15, 10, 5, 2.5];
+  // Update bar weight default when units change
+  useState(() => {
+    setBarWeight(units === 'metric' ? '20' : '45');
+  });
+
+  const availablePlatesImperial = [45, 35, 25, 15, 10, 5, 2.5];
+  const availablePlatesMetric = [25, 20, 15, 10, 5, 2.5, 1.25];
 
   const calculate = () => {
     const target = parseFloat(targetWeight);
     const bar = parseFloat(barWeight);
+    const availablePlates = units === 'metric' ? availablePlatesMetric : availablePlatesImperial;
 
     if (!target || !bar || target <= bar) {
       alert('Please enter valid values (target weight must be greater than bar weight)');
@@ -356,55 +417,61 @@ function PlateCalculator() {
       }
     }
 
+    const unitLabel = units === 'metric' ? 'kg' : 'lbs';
+
     if (remaining > 0.1) {
-      setResult(`Cannot load exactly ${target} lbs. Closest: ${bar + plates.reduce((a, b) => a + b, 0) * 2} lbs`);
+      setResult(
+        `Cannot load exactly ${target} ${unitLabel}. Closest: ${
+          bar + plates.reduce((a, b) => a + b, 0) * 2
+        } ${unitLabel}`
+      );
     } else {
-      setResult(`Per side: ${plates.map((p) => `${p} lb`).join(', ') || 'No plates needed'}`);
+      setResult(
+        `Per side: ${plates.map((p) => `${p} ${unitLabel}`).join(', ') || 'No plates needed'}`
+      );
     }
   };
 
   return (
-    <Card>
-      <CardContent>
-        <Typography variant="h5" sx={{ mb: 3, fontWeight: 600 }}>
-          4. Plate Loading Calculator
-        </Typography>
-
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              label="Target weight (lbs)"
-              value={targetWeight}
-              onChange={(e) => setTargetWeight(e.target.value)}
-              type="number"
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              label="Bar weight (lbs)"
-              value={barWeight}
-              onChange={(e) => setBarWeight(e.target.value)}
-              type="number"
-            />
-          </Grid>
+    <Box>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+          <StyledNumberInput
+            fullWidth
+            label={`Target weight (${units === 'metric' ? 'kg' : 'lbs'})`}
+            value={targetWeight}
+            onChange={(e) => setTargetWeight(e.target.value)}
+            step={units === 'metric' ? 2.5 : 5}
+            min={0}
+          />
         </Grid>
+        <Grid item xs={12} sm={6}>
+          <StyledNumberInput
+            fullWidth
+            label={`Bar weight (${units === 'metric' ? 'kg' : 'lbs'})`}
+            value={barWeight}
+            onChange={(e) => setBarWeight(e.target.value)}
+            step={units === 'metric' ? 2.5 : 5}
+            min={0}
+          />
+        </Grid>
+      </Grid>
 
-        <Button variant="contained" onClick={calculate} sx={{ mt: 2 }}>
-          Calculate Plates
-        </Button>
+      <Button variant="contained" onClick={calculate} sx={{ mt: 2 }}>
+        Calculate Plates
+      </Button>
 
-        {result && (
-          <Alert severity="info" sx={{ mt: 3 }}>
-            <Typography variant="body1">{result}</Typography>
-            <Typography variant="caption">
-              Available plates: 45, 35, 25, 15, 10, 5, 2.5 lbs
-            </Typography>
-          </Alert>
-        )}
-      </CardContent>
-    </Card>
+      {result && (
+        <Alert severity="info" sx={{ mt: 3 }}>
+          <Typography variant="body1">{result}</Typography>
+          <Typography variant="caption">
+            Available plates:{' '}
+            {(units === 'metric' ? availablePlatesMetric : availablePlatesImperial).join(', ')}{' '}
+            {units === 'metric' ? 'kg' : 'lbs'}
+          </Typography>
+        </Alert>
+      )}
+    </Box>
   );
 }
 
@@ -430,49 +497,54 @@ function RPECalculator() {
   };
 
   return (
-    <Card>
-      <CardContent>
-        <Typography variant="h5" sx={{ mb: 3, fontWeight: 600 }}>
-          5. RPE to Intensity Calculator
-        </Typography>
+    <Box>
+      <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+        RPE (Rate of Perceived Exertion): 10 = max effort, 9 = 1 rep in reserve, 8 = 2 reps in reserve, etc.
+      </Typography>
 
-        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-          RPE (Rate of Perceived Exertion): 10 = max effort, 9 = 1 rep in reserve, 8 = 2 reps in reserve, etc.
-        </Typography>
-
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              label="RPE (6-10)"
-              value={rpe}
-              onChange={(e) => setRPE(e.target.value)}
-              type="number"
-              inputProps={{ min: 6, max: 10, step: 0.5 }}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              label="Reps performed"
-              value={reps}
-              onChange={(e) => setReps(e.target.value)}
-              type="number"
-            />
-          </Grid>
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={6}>
+          <StyledNumberInput
+            fullWidth
+            label="RPE (6-10)"
+            value={rpe}
+            onChange={(e) => setRPE(e.target.value)}
+            step={0.5}
+            min={6}
+            max={10}
+          />
         </Grid>
+        <Grid item xs={12} sm={6}>
+          <StyledNumberInput
+            fullWidth
+            label="Reps performed"
+            value={reps}
+            onChange={(e) => setReps(e.target.value)}
+            step={1}
+            min={1}
+            max={12}
+          />
+        </Grid>
+      </Grid>
 
-        <Button variant="contained" onClick={calculate} sx={{ mt: 2 }}>
-          Calculate Intensity
-        </Button>
+      <Button variant="contained" onClick={calculate} sx={{ mt: 2 }}>
+        Calculate Intensity
+      </Button>
 
-        {intensity !== null && (
-          <Alert severity="info" sx={{ mt: 3 }}>
-            <Typography variant="h6">Estimated Intensity: ~{intensity}% of 1RM</Typography>
-            <Typography variant="body2">This is a rough approximation for programming purposes.</Typography>
-          </Alert>
-        )}
-      </CardContent>
-    </Card>
+      {intensity !== null && (
+        <Alert severity="info" sx={{ mt: 3 }}>
+          <Typography variant="h6">Estimated Intensity: ~{intensity}% of 1RM</Typography>
+          <Typography variant="body2">This is a rough approximation for programming purposes.</Typography>
+        </Alert>
+      )}
+    </Box>
+  );
+}
+
+export default function Calculators() {
+  return (
+    <UnitProvider>
+      <CalculatorsContent />
+    </UnitProvider>
   );
 }

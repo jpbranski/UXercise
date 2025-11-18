@@ -59,19 +59,53 @@ export default function Header() {
 
   return (
     <>
-      <AppBar position="sticky" sx={{ backgroundColor: 'background.paper' }}>
+      <AppBar
+        position="sticky"
+        sx={{
+          background: 'rgba(18, 18, 18, 0.8)',
+          backdropFilter: 'blur(10px)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+          boxShadow: 'none',
+        }}
+      >
         <Container maxWidth="xl">
-          <Toolbar disableGutters>
+          <Toolbar disableGutters sx={{ py: 1.5 }}>
             {/* Logo */}
-            <Link href="/" style={{ display: 'flex', alignItems: 'center', marginRight: '2rem' }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Image
-                  src="/logo.svg"
-                  alt="UXercise Logo"
-                  width={120}
-                  height={40}
-                  style={{ objectFit: 'contain' }}
-                />
+            <Link href="/" style={{ display: 'flex', alignItems: 'center', marginRight: '2rem', textDecoration: 'none' }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  px: 2,
+                  py: 0.5,
+                  borderRadius: 3,
+                  background: 'rgba(255, 107, 53, 0.1)',
+                  border: '1px solid rgba(255, 107, 53, 0.3)',
+                }}
+              >
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontWeight: 700,
+                    background: 'linear-gradient(135deg, #FF6B35 0%, #FF8C61 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    display: 'inline',
+                  }}
+                >
+                  UX
+                </Typography>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontWeight: 700,
+                    color: '#B0B0B0',
+                    display: 'inline',
+                  }}
+                >
+                  ercise
+                </Typography>
               </Box>
             </Link>
 

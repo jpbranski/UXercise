@@ -17,18 +17,27 @@ import {
   FormControlLabel,
   Chip,
   IconButton,
+  Menu,
+  MenuItem,
   Paper,
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import { useWorkoutData } from '@/hooks/useWorkoutData';
-import { DAYS_OF_WEEK, DayOfWeek } from '@/types/workout';
+import { DAYS_OF_WEEK, DayOfWeek, Section } from '@/types/workout';
+import SectionEditor from '@/components/SectionEditor';
+import WorkoutAnalytics from '@/components/WorkoutAnalytics';
 
 export default function DemoPage() {
   const { data, setData, resetData, isLoaded } = useWorkoutData();
   const [selectedDay, setSelectedDay] = useState<DayOfWeek>('monday');
   const [currentWeek, setCurrentWeek] = useState<'single' | 'a' | 'b'>('single');
+  const [view, setView] = useState<'builder' | 'summary'>('builder');
+  const [sectionEditorOpen, setSectionEditorOpen] = useState(false);
+  const [editingSection, setEditingSection] = useState<Section | undefined>();
+  const [menuAnchor, setMenuAnchor] = useState<{ element: HTMLElement; sectionId: string } | null>(null);
 
   if (!isLoaded) {
     return (
@@ -50,6 +59,16 @@ export default function DemoPage() {
     return week[selectedDay];
   };
 
+  const updateCurrentWeek = (updatedWeek: any) => {
+    if (data.mode === 'single') {
+      setData({ ...data, singleWeek: updatedWeek });
+    } else if (currentWeek === 'a') {
+      setData({ ...data, aWeek: updatedWeek });
+    } else {
+      setData({ ...data, bWeek: updatedWeek });
+    }
+  };
+
   const toggleOffDay = () => {
     const week = getCurrentWeek();
     const newWeek = {
@@ -60,14 +79,57 @@ export default function DemoPage() {
         sections: week[selectedDay].isOffDay ? [] : week[selectedDay].sections,
       },
     };
+    updateCurrentWeek(newWeek);
+  };
 
-    if (data.mode === 'single') {
-      setData({ ...data, singleWeek: newWeek });
-    } else if (currentWeek === 'a') {
-      setData({ ...data, aWeek: newWeek });
-    } else {
-      setData({ ...data, bWeek: newWeek });
-    }
+  const handleAddSection = () => {
+    setEditingSection(undefined);
+    setSectionEditorOpen(true);
+  };
+
+  const handleSaveSection = (section: Section) => {
+    const week = getCurrentWeek();
+    const day = week[selectedDay];
+
+    const existingIndex = day.sections.findIndex((s) => s.id === section.id);
+    const newSections =
+      existingIndex >= 0
+        ? day.sections.map((s, i) => (i === existingIndex ? section : s))
+        : [...day.sections, section];
+
+    updateCurrentWeek({
+      ...week,
+      [selectedDay]: {
+        ...day,
+        sections: newSections,
+      },
+    });
+  };
+
+  const handleDeleteSection = (sectionId: string) => {
+    const week = getCurrentWeek();
+    const day = week[selectedDay];
+
+    updateCurrentWeek({
+      ...week,
+      [selectedDay]: {
+        ...day,
+        sections: day.sections.filter((s) => s.id !== sectionId),
+      },
+    });
+    setMenuAnchor(null);
+  };
+
+  const handleEditSection = (section: Section) => {
+    setEditingSection(section);
+    setSectionEditorOpen(true);
+    setMenuAnchor(null);
+  };
+
+  const handleDuplicateSection = (section: Section) => {
+    const newSection = { ...section, id: `section-${Date.now()}` };
+    handleSaveSection(newSection);
+    setMenuAnchor(null);
   };
 
   const handleResetData = () => {
@@ -103,8 +165,8 @@ export default function DemoPage() {
               </IconButton>
             </Box>
 
-            <Alert severity="warning" sx={{ mb: 2, fontSize: '0.85rem' }}>
-              Demo prototype - Data stored locally in your browser
+            <Alert severity="info" sx={{ mb: 2, fontSize: '0.85rem' }}>
+              Demo prototype - Data stored locally
             </Alert>
 
             {/* Mode Toggle */}
@@ -126,11 +188,7 @@ export default function DemoPage() {
 
             {/* A/B Week Tabs */}
             {data.mode === 'ab' && (
-              <Tabs
-                value={currentWeek}
-                onChange={(_, newWeek) => setCurrentWeek(newWeek)}
-                sx={{ mb: 2 }}
-              >
+              <Tabs value={currentWeek} onChange={(_, newWeek) => setCurrentWeek(newWeek)} sx={{ mb: 2 }}>
                 <Tab label="Week A" value="a" />
                 <Tab label="Week B" value="b" />
               </Tabs>
@@ -152,120 +210,179 @@ export default function DemoPage() {
             </Box>
           </Box>
 
-          {/* Content */}
-          <Box sx={{ p: 2 }}>
-            <Box sx={{ mb: 3 }}>
-              <FormControlLabel
-                control={<Switch checked={currentDay.isOffDay} onChange={toggleOffDay} />}
-                label={`${selectedDay.charAt(0).toUpperCase() + selectedDay.slice(1)} is an off day`}
-              />
-            </Box>
-
-            {!currentDay.isOffDay && (
-              <>
-                {currentDay.sections.length === 0 ? (
-                  <Box sx={{ textAlign: 'center', py: 4 }}>
-                    <FitnessCenterIcon sx={{ fontSize: 48, color: 'text.secondary', mb: 2 }} />
-                    <Typography color="text.secondary" sx={{ mb: 2 }}>
-                      No sections added yet
-                    </Typography>
-                    <Typography variant="caption" color="text.secondary" display="block" sx={{ mb: 2 }}>
-                      This is a simplified demo. Full section/exercise management coming soon!
-                    </Typography>
-                  </Box>
-                ) : (
-                  <Box>
-                    {currentDay.sections.map((section, idx) => (
-                      <Card key={section.id} sx={{ mb: 2 }}>
-                        <CardContent>
-                          <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-                            <Typography variant="h6" sx={{ fontSize: '1rem' }}>
-                              {section.name}
-                            </Typography>
-                            <Chip
-                              label={section.type}
-                              size="small"
-                              color={section.type === 'interval' ? 'secondary' : 'default'}
-                            />
-                          </Box>
-
-                          {section.exercises.map((exercise, exIdx) => (
-                            <Box key={exIdx} sx={{ mb: 1 }}>
-                              <Typography variant="body2" sx={{ fontWeight: 500 }}>
-                                {exercise.name}
-                              </Typography>
-                              <Typography variant="caption" color="text.secondary">
-                                {exercise.sets.map((s) =>
-                                  `${s.sets}×${s.reps}${s.weight ? ` @ ${s.weight} lbs` : ''}`
-                                ).join(', ')}
-                              </Typography>
-                            </Box>
-                          ))}
-
-                          {section.type === 'interval' && (
-                            <Typography variant="caption" color="secondary.main">
-                              {section.toFailure
-                                ? 'To failure'
-                                : `${section.intervalCount} intervals × ${section.duration}s`}
-                            </Typography>
-                          )}
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </Box>
-                )}
-
-                <Box sx={{ textAlign: 'center', mt: 3 }}>
-                  <Typography variant="caption" color="text.secondary" display="block" sx={{ mb: 1 }}>
-                    Simplified Demo - Full builder coming soon
-                  </Typography>
-                  <Typography variant="caption" color="text.secondary">
-                    Try the default Monday/Wednesday/Friday workouts!
-                  </Typography>
-                </Box>
-              </>
-            )}
-
-            {currentDay.isOffDay && (
-              <Box sx={{ textAlign: 'center', py: 6 }}>
-                <Typography variant="h6" color="text.secondary">
-                  Rest Day
-                </Typography>
-                <Typography variant="caption" color="text.secondary">
-                  Recovery is just as important as training
-                </Typography>
-              </Box>
-            )}
-          </Box>
-
-          {/* Bottom Navigation */}
+          {/* Bottom Nav */}
           <Box
             sx={{
               display: 'flex',
-              justifyContent: 'space-around',
-              p: 2,
-              borderTop: 1,
+              p: 1,
+              borderBottom: 1,
               borderColor: 'divider',
               bgcolor: 'background.paper',
             }}
           >
-            <Button size="small">Home</Button>
-            <Button size="small" variant="contained" color="primary">
+            <Button
+              size="small"
+              variant={view === 'builder' ? 'contained' : 'text'}
+              onClick={() => setView('builder')}
+              sx={{ flex: 1 }}
+            >
               Builder
             </Button>
-            <Button size="small">Profile</Button>
+            <Button
+              size="small"
+              variant={view === 'summary' ? 'contained' : 'text'}
+              onClick={() => setView('summary')}
+              sx={{ flex: 1 }}
+            >
+              Summary
+            </Button>
+          </Box>
+
+          {/* Content */}
+          <Box sx={{ p: 2, minHeight: 400 }}>
+            {view === 'builder' ? (
+              <>
+                <Box sx={{ mb: 3 }}>
+                  <FormControlLabel
+                    control={<Switch checked={currentDay.isOffDay} onChange={toggleOffDay} />}
+                    label={`${selectedDay.charAt(0).toUpperCase() + selectedDay.slice(1)} is an off day`}
+                  />
+                </Box>
+
+                {!currentDay.isOffDay && (
+                  <>
+                    {currentDay.sections.length === 0 ? (
+                      <Box sx={{ textAlign: 'center', py: 4 }}>
+                        <FitnessCenterIcon sx={{ fontSize: 48, color: 'text.secondary', mb: 2 }} />
+                        <Typography color="text.secondary" sx={{ mb: 2 }}>
+                          No sections added yet
+                        </Typography>
+                        <Button variant="contained" startIcon={<AddIcon />} onClick={handleAddSection}>
+                          Add Section
+                        </Button>
+                      </Box>
+                    ) : (
+                      <Box>
+                        {currentDay.sections.map((section) => (
+                          <Card key={section.id} sx={{ mb: 2 }}>
+                            <CardContent>
+                              <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
+                                <Typography variant="h6" sx={{ fontSize: '1rem' }}>
+                                  {section.name}
+                                </Typography>
+                                <Box>
+                                  <Chip
+                                    label={section.type}
+                                    size="small"
+                                    color={section.type === 'interval' ? 'secondary' : 'default'}
+                                    sx={{ mr: 1 }}
+                                  />
+                                  <IconButton
+                                    size="small"
+                                    onClick={(e) => setMenuAnchor({ element: e.currentTarget, sectionId: section.id })}
+                                  >
+                                    <MoreVertIcon />
+                                  </IconButton>
+                                </Box>
+                              </Box>
+
+                              {section.exercises.map((exercise, exIdx) => (
+                                <Box key={exIdx} sx={{ mb: 1 }}>
+                                  <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                                    {exercise.name}
+                                  </Typography>
+                                  <Typography variant="caption" color="text.secondary">
+                                    {exercise.sets.map((s) => `${s.sets}×${s.reps}${s.weight ? ` @ ${s.weight} lbs` : ''}`).join(', ')}
+                                  </Typography>
+                                </Box>
+                              ))}
+
+                              {section.type === 'interval' && (
+                                <Typography variant="caption" color="secondary.main">
+                                  {section.toFailure ? 'To failure' : `${section.intervalCount} intervals × ${section.duration}s`}
+                                </Typography>
+                              )}
+                            </CardContent>
+                          </Card>
+                        ))}
+
+                        <Button variant="outlined" startIcon={<AddIcon />} onClick={handleAddSection} fullWidth>
+                          Add Section
+                        </Button>
+                      </Box>
+                    )}
+                  </>
+                )}
+
+                {currentDay.isOffDay && (
+                  <Box sx={{ textAlign: 'center', py: 6 }}>
+                    <Typography variant="h6" color="text.secondary">
+                      Rest Day
+                    </Typography>
+                    <Typography variant="caption" color="text.secondary">
+                      Recovery is just as important as training
+                    </Typography>
+                  </Box>
+                )}
+              </>
+            ) : (
+              <WorkoutAnalytics week={getCurrentWeek()} />
+            )}
           </Box>
         </Paper>
 
         {/* Instructions */}
         <Box sx={{ mt: 4, textAlign: 'center' }}>
           <Typography variant="caption" color="text.secondary">
-            This is a demo prototype of the workout planner.
+            This is a functional demo of the workout planner.
             <br />
-            Full features include: exercise selection, section management, weekly summaries, and analytics.
+            Add sections, pick exercises, and view weekly analytics!
           </Typography>
         </Box>
       </Container>
+
+      {/* Section Menu */}
+      <Menu
+        anchorEl={menuAnchor?.element}
+        open={Boolean(menuAnchor)}
+        onClose={() => setMenuAnchor(null)}
+      >
+        <MenuItem
+          onClick={() => {
+            const section = getCurrentDay().sections.find((s) => s.id === menuAnchor?.sectionId);
+            if (section) handleEditSection(section);
+          }}
+        >
+          Edit
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            const section = getCurrentDay().sections.find((s) => s.id === menuAnchor?.sectionId);
+            if (section) handleDuplicateSection(section);
+          }}
+        >
+          Duplicate
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            if (menuAnchor) handleDeleteSection(menuAnchor.sectionId);
+          }}
+          sx={{ color: 'error.main' }}
+        >
+          Delete
+        </MenuItem>
+      </Menu>
+
+      {/* Section Editor */}
+      <SectionEditor
+        open={sectionEditorOpen}
+        onClose={() => {
+          setSectionEditorOpen(false);
+          setEditingSection(undefined);
+        }}
+        onSave={handleSaveSection}
+        initialSection={editingSection}
+      />
     </Box>
   );
 }
