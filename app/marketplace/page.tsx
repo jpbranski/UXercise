@@ -20,11 +20,16 @@ import {
   FormControlLabel,
   Switch,
   CardActionArea,
+  Alert,
 } from '@mui/material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import VerifiedIcon from '@mui/icons-material/Verified';
-import marketplaceData from '@/data/marketplace.json';
+import marketplaceDataRaw from '@/data/marketplace.json';
 import ProductPlaceholder from '@/components/ProductPlaceholder';
+import { MarketplaceItem } from '@/types/marketplace';
+
+// Type-cast the imported data to ensure TypeScript knows the correct type
+const marketplaceData = marketplaceDataRaw as MarketplaceItem[];
 
 export default function Marketplace() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -66,9 +71,16 @@ export default function Marketplace() {
         <Typography variant="h2" component="h1" sx={{ mb: 2, fontWeight: 700 }}>
           Fitness Marketplace
         </Typography>
-        <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+        <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
           Curated selection of training equipment and fitness products. Affiliate links are clearly marked.
         </Typography>
+
+        {/* Amazon Affiliate Disclaimer */}
+        <Alert severity="info" sx={{ mb: 4 }}>
+          As an Amazon Associate, we earn from qualifying purchases. This means if you click on
+          certain links and make a purchase, we may receive a small commission at no extra cost to
+          you. We only recommend products we believe will provide value to our community.
+        </Alert>
 
         {/* Search and Filters */}
         <Box sx={{ mb: 4 }}>
