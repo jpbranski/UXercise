@@ -18,7 +18,10 @@ import { MarketplaceItemCard } from '@/components/admin/MarketplaceItemCard';
 import { AddMarketplaceItemForm } from '@/components/admin/AddMarketplaceItemForm';
 import { EditMarketplaceDialog } from '@/components/admin/EditMarketplaceDialog';
 import { MarketplaceItem, MarketplaceItemWithId } from '@/types/marketplace';
-import marketplaceData from '@/data/marketplace.json';
+import marketplaceDataRaw from '@/data/marketplace.json';
+
+// Type-cast the imported data to ensure TypeScript knows the correct type
+const marketplaceData = marketplaceDataRaw as MarketplaceItem[];
 
 // Helper function to generate unique IDs
 const generateId = () => `item_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
