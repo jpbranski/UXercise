@@ -1,8 +1,10 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { Box, Container, Typography, Grid, Link as MuiLink, Divider } from '@mui/material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import CookiePreferencesModal from './CookieConsent/CookiePreferencesModal';
 
 const footerLinks = {
   main: [
@@ -22,6 +24,25 @@ const footerLinks = {
 };
 
 export default function Footer() {
+  const [showCookieModal, setShowCookieModal] = useState(false);
+  const [focusCCPA, setFocusCCPA] = useState(false);
+
+  const handleCookiePreferences = () => {
+    setFocusCCPA(false);
+    setShowCookieModal(true);
+  };
+
+  const handleCCPALink = () => {
+    setFocusCCPA(true);
+    setShowCookieModal(true);
+  };
+
+  const handleModalClose = (saved: boolean) => {
+    setShowCookieModal(false);
+    if (saved) {
+      // Modal already triggers reload if needed
+    }
+  };
   return (
     <Box
       component="footer"
@@ -117,6 +138,53 @@ export default function Footer() {
                   {link.title}
                 </MuiLink>
               ))}
+
+              {/* Cookie Preferences Link */}
+              <MuiLink
+                component="button"
+                onClick={handleCookiePreferences}
+                sx={{
+                  color: 'text.secondary',
+                  textDecoration: 'none',
+                  fontSize: '0.875rem',
+                  transition: 'color 0.2s',
+                  textAlign: 'left',
+                  background: 'none',
+                  border: 'none',
+                  padding: 0,
+                  cursor: 'pointer',
+                  fontFamily: 'inherit',
+                  '&:hover': {
+                    color: 'primary.main',
+                  },
+                }}
+              >
+                Cookie Preferences
+              </MuiLink>
+
+              {/* CCPA Link */}
+              <MuiLink
+                component="button"
+                onClick={handleCCPALink}
+                sx={{
+                  color: 'text.secondary',
+                  textDecoration: 'none',
+                  fontSize: '0.875rem',
+                  transition: 'color 0.2s',
+                  textAlign: 'left',
+                  background: 'none',
+                  border: 'none',
+                  padding: 0,
+                  cursor: 'pointer',
+                  fontFamily: 'inherit',
+                  lineHeight: 1.4,
+                  '&:hover': {
+                    color: 'primary.main',
+                  },
+                }}
+              >
+                Do Not Sell or Share My Personal Information
+              </MuiLink>
             </Box>
           </Grid>
         </Grid>
@@ -167,6 +235,15 @@ export default function Footer() {
           </Typography>
         </Box>
       </Container>
+
+      {/* Cookie Preferences Modal */}
+      {showCookieModal && (
+        <CookiePreferencesModal
+          open={showCookieModal}
+          onClose={handleModalClose}
+          focusCCPA={focusCCPA}
+        />
+      )}
     </Box>
   );
 }
