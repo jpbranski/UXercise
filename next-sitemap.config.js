@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://www.uxercise.com',
+  siteUrl: process.env.SITE_URL || 'https://www.uxerciseapp.com',
   generateRobotsTxt: false, // Using custom robots.txt in public/
   // Exclude any admin or private routes
   exclude: [],
