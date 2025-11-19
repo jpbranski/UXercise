@@ -1,10 +1,7 @@
+'use client';
+
 import Link from 'next/link';
 import { Container, Typography, Box, Paper, Link as MuiLink } from '@mui/material';
-
-export const metadata = {
-  title: 'Privacy Policy - UXercise',
-  description: 'Comprehensive privacy policy for UXercise fitness platform, including GDPR and CCPA rights.',
-};
 
 export default function PrivacyPolicy() {
   return (
