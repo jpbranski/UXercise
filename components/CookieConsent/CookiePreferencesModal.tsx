@@ -175,9 +175,7 @@ export default function CookiePreferencesModal({
           {cookieCategories.map((category, index) => {
             const isEnabled = category.locked
               ? true
-              : category.key === 'doNotSell'
-              ? preferences[category.key] // doNotSell: ON means opt-out
-              : preferences[category.key];
+              : Boolean(preferences[category.key]);
 
             return (
               <Box key={category.key}>
