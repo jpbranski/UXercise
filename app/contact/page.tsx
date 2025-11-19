@@ -1,6 +1,7 @@
-import { Container, Typography, Box, Paper, Alert } from '@mui/material';
+import { Container, Typography, Box, Paper, Alert, Link as MuiLink } from '@mui/material';
 import EmailIcon from '@mui/icons-material/Email';
-import GitHubIcon from '@mui/icons-material/GitHub';
+import LanguageIcon from '@mui/icons-material/Language';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 export const metadata = {
   title: 'Contact UXercise',
@@ -25,19 +26,40 @@ export default function Contact() {
               <EmailIcon sx={{ mr: 2, color: 'primary.main' }} />
               <Box>
                 <Typography variant="h6">Email</Typography>
-                <Typography variant="body2" color="text.secondary">
-                  contact@uxercise.com
-                </Typography>
+                <MuiLink
+                  href="mailto:dev@jpbranski.com"
+                  sx={{
+                    color: 'text.secondary',
+                    textDecoration: 'none',
+                    '&:hover': { color: 'primary.main', textDecoration: 'underline' },
+                  }}
+                >
+                  dev@jpbranski.com
+                </MuiLink>
               </Box>
             </Box>
 
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <GitHubIcon sx={{ mr: 2, color: 'primary.main' }} />
+              <LanguageIcon sx={{ mr: 2, color: 'primary.main' }} />
               <Box>
-                <Typography variant="h6">GitHub</Typography>
-                <Typography variant="body2" color="text.secondary">
-                  github.com/uxercise
-                </Typography>
+                <Typography variant="h6">Website</Typography>
+                <MuiLink
+                  href="https://jpbranski.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 0.5,
+                    color: 'primary.main',
+                    textDecoration: 'none',
+                    fontWeight: 500,
+                    '&:hover': { textDecoration: 'underline' },
+                  }}
+                >
+                  jpbranski.com
+                  <OpenInNewIcon sx={{ fontSize: 16 }} />
+                </MuiLink>
               </Box>
             </Box>
           </Box>

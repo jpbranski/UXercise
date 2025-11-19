@@ -102,27 +102,36 @@ export default function Home() {
             <Card
               sx={{
                 height: '100%',
-                transition: 'transform 0.2s',
-                '&:hover': { transform: 'translateY(-4px)' },
+                transition: 'all 0.3s ease-in-out',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: '0 8px 24px rgba(255, 107, 53, 0.2), 0 4px 12px rgba(157, 78, 221, 0.1)',
+                },
               }}
             >
-              <CardContent>
+              <CardContent sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                   <CalculateIcon sx={{ fontSize: 40, color: 'primary.main', mr: 2 }} />
-                  <Typography variant="h5" component="h3">
+                  <Typography variant="h5" component="h3" sx={{ fontSize: '1.25rem', fontWeight: 600 }}>
                     Tools & Calculators
                   </Typography>
                 </Box>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.secondary" sx={{ mb: 2, flexGrow: 1, lineHeight: 1.6 }}>
                   Practical calculators for BMI, TDEE, 1RM estimation, and plate loading.
                   Quick, simple tools to support your training decisions.
                 </Typography>
                 <Button
                   component={Link}
                   href="/calculators"
-                  sx={{ mt: 2 }}
                   variant="text"
                   color="primary"
+                  sx={{
+                    alignSelf: 'flex-start',
+                    fontWeight: 600,
+                    '&:hover': {
+                      backgroundColor: 'rgba(255, 107, 53, 0.08)',
+                    },
+                  }}
                 >
                   Explore Calculators →
                 </Button>
@@ -134,27 +143,36 @@ export default function Home() {
             <Card
               sx={{
                 height: '100%',
-                transition: 'transform 0.2s',
-                '&:hover': { transform: 'translateY(-4px)' },
+                transition: 'all 0.3s ease-in-out',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: '0 8px 24px rgba(255, 107, 53, 0.2), 0 4px 12px rgba(157, 78, 221, 0.1)',
+                },
               }}
             >
-              <CardContent>
+              <CardContent sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                   <MenuBookIcon sx={{ fontSize: 40, color: 'primary.main', mr: 2 }} />
-                  <Typography variant="h5" component="h3">
+                  <Typography variant="h5" component="h3" sx={{ fontSize: '1.25rem', fontWeight: 600 }}>
                     Guides & Articles
                   </Typography>
                 </Box>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.secondary" sx={{ mb: 2, flexGrow: 1, lineHeight: 1.6 }}>
                   Educational articles covering strength training basics, nutrition fundamentals,
                   recovery strategies, and more—written for beginners.
                 </Typography>
                 <Button
                   component={Link}
                   href="/articles"
-                  sx={{ mt: 2 }}
                   variant="text"
                   color="primary"
+                  sx={{
+                    alignSelf: 'flex-start',
+                    fontWeight: 600,
+                    '&:hover': {
+                      backgroundColor: 'rgba(255, 107, 53, 0.08)',
+                    },
+                  }}
                 >
                   Read Articles →
                 </Button>
@@ -166,27 +184,36 @@ export default function Home() {
             <Card
               sx={{
                 height: '100%',
-                transition: 'transform 0.2s',
-                '&:hover': { transform: 'translateY(-4px)' },
+                transition: 'all 0.3s ease-in-out',
+                '&:hover': {
+                  transform: 'translateY(-4px)',
+                  boxShadow: '0 8px 24px rgba(255, 107, 53, 0.2), 0 4px 12px rgba(157, 78, 221, 0.1)',
+                },
               }}
             >
-              <CardContent>
+              <CardContent sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
                   <ShoppingCartIcon sx={{ fontSize: 40, color: 'primary.main', mr: 2 }} />
-                  <Typography variant="h5" component="h3">
+                  <Typography variant="h5" component="h3" sx={{ fontSize: '1.25rem', fontWeight: 600 }}>
                     Marketplace
                   </Typography>
                 </Box>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.secondary" sx={{ mb: 2, flexGrow: 1, lineHeight: 1.6 }}>
                   Curated selection of training equipment and fitness products.
                   Find quality gear for your home gym or training needs.
                 </Typography>
                 <Button
                   component={Link}
                   href="/marketplace"
-                  sx={{ mt: 2 }}
                   variant="text"
                   color="primary"
+                  sx={{
+                    alignSelf: 'flex-start',
+                    fontWeight: 600,
+                    '&:hover': {
+                      backgroundColor: 'rgba(255, 107, 53, 0.08)',
+                    },
+                  }}
                 >
                   Browse Marketplace →
                 </Button>

@@ -29,7 +29,7 @@ import ProductPlaceholder from '@/components/ProductPlaceholder';
 export default function Marketplace() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [showAffiliateOnly, setShowAffiliateOnly] = useState(false);
+  const [hideAffiliate, setHideAffiliate] = useState(false);
 
   // Get unique categories
   const categories = useMemo(() => {
@@ -48,16 +48,16 @@ export default function Marketplace() {
       const matchesCategory =
         selectedCategory === 'All' || product.category === selectedCategory;
 
-      const matchesAffiliate = !showAffiliateOnly || product.affiliate;
+      const matchesAffiliate = !hideAffiliate || !product.affiliate;
 
       return matchesSearch && matchesCategory && matchesAffiliate;
     });
-  }, [searchTerm, selectedCategory, showAffiliateOnly]);
+  }, [searchTerm, selectedCategory, hideAffiliate]);
 
   const clearFilters = () => {
     setSearchTerm('');
     setSelectedCategory('All');
-    setShowAffiliateOnly(false);
+    setHideAffiliate(false);
   };
 
   return (
@@ -102,16 +102,16 @@ export default function Marketplace() {
               <FormControlLabel
                 control={
                   <Switch
-                    checked={showAffiliateOnly}
-                    onChange={(e) => setShowAffiliateOnly(e.target.checked)}
+                    checked={hideAffiliate}
+                    onChange={(e) => setHideAffiliate(e.target.checked)}
                     color="secondary"
                   />
                 }
-                label="Affiliate only"
+                label="Hide affiliate"
               />
             </Grid>
           </Grid>
-          {(searchTerm || selectedCategory !== 'All' || showAffiliateOnly) && (
+          {(searchTerm || selectedCategory !== 'All' || hideAffiliate) && (
             <Box sx={{ mt: 2 }}>
               <Button variant="outlined" size="small" onClick={clearFilters}>
                 Clear Filters

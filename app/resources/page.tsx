@@ -18,7 +18,6 @@ import {
   Button,
 } from '@mui/material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import VerifiedIcon from '@mui/icons-material/Verified';
 import resourcesData from '@/data/resources.json';
 
 export default function Resources() {
@@ -133,36 +132,66 @@ export default function Resources() {
         <Grid container spacing={3}>
           {filteredResources.map((resource, index) => (
             <Grid item xs={12} md={6} key={index}>
-              <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <CardContent sx={{ flexGrow: 1 }}>
-                  <Box sx={{ display: 'flex', alignItems: 'flex-start', mb: 2 }}>
-                    <Typography variant="h6" component="h3" sx={{ flexGrow: 1 }}>
-                      {resource.title}
-                    </Typography>
-                    {resource.affiliate && (
-                      <Chip
-                        label="Affiliate"
-                        size="small"
-                        color="secondary"
-                        icon={<VerifiedIcon />}
-                        sx={{ ml: 1 }}
-                      />
-                    )}
-                  </Box>
+              <Card
+                sx={{
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  transition: 'all 0.3s ease-in-out',
+                  '&:hover': {
+                    transform: 'translateY(-4px)',
+                    boxShadow: '0 8px 24px rgba(255, 107, 53, 0.2), 0 4px 12px rgba(157, 78, 221, 0.1)',
+                  },
+                }}
+              >
+                <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                  <Typography
+                    variant="h6"
+                    component="h3"
+                    sx={{
+                      mb: 2,
+                      fontWeight: 600,
+                      fontSize: '1.15rem',
+                    }}
+                  >
+                    {resource.title}
+                  </Typography>
 
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      mb: 2,
+                      flexGrow: 1,
+                      lineHeight: 1.6,
+                    }}
+                  >
                     {resource.description}
                   </Typography>
 
-                  <Box sx={{ mb: 2 }}>
-                    <Chip label={resource.category} size="small" sx={{ mr: 1 }} />
+                  <Box sx={{ mb: 2, display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                    <Chip
+                      label={resource.category}
+                      size="small"
+                      sx={{
+                        backgroundColor: 'primary.main',
+                        color: 'white',
+                        fontWeight: 500,
+                        fontSize: '0.7rem',
+                        height: 22,
+                      }}
+                    />
                     {resource.tags.map((tag) => (
                       <Chip
                         key={tag}
                         label={tag}
                         size="small"
                         variant="outlined"
-                        sx={{ mr: 1, mb: 1 }}
+                        sx={{
+                          borderColor: 'divider',
+                          fontSize: '0.7rem',
+                          height: 22,
+                        }}
                       />
                     ))}
                   </Box>
@@ -176,10 +205,17 @@ export default function Resources() {
                       alignItems: 'center',
                       color: 'primary.main',
                       textDecoration: 'none',
-                      '&:hover': { textDecoration: 'underline' },
+                      fontWeight: 600,
+                      fontSize: '0.875rem',
+                      transition: 'all 0.2s',
+                      '&:hover': {
+                        color: 'primary.light',
+                        gap: 0.75,
+                      },
+                      gap: 0.5,
                     }}
                   >
-                    Visit Resource <OpenInNewIcon sx={{ ml: 0.5, fontSize: 16 }} />
+                    Visit Resource <OpenInNewIcon sx={{ fontSize: 16 }} />
                   </MuiLink>
                 </CardContent>
               </Card>
