@@ -38,9 +38,17 @@ export default function Header() {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2, color: 'primary.main', fontWeight: 700 }}>
-        UXercise
-      </Typography>
+      {/* Mobile drawer logo */}
+      <Box sx={{ my: 2, display: 'flex', justifyContent: 'center' }}>
+        <Image
+          src="/images/logo.webp"
+          alt="UXercise Logo"
+          width={120}
+          height={40}
+          style={{ objectFit: 'contain' }}
+        />
+      </Box>
+
       <List>
         {navLinks.map((link) => (
           <ListItem key={link.path} disablePadding>
@@ -70,43 +78,24 @@ export default function Header() {
       >
         <Container maxWidth="xl">
           <Toolbar disableGutters sx={{ py: 1.5 }}>
-            {/* Logo */}
-            <Link href="/" style={{ display: 'flex', alignItems: 'center', marginRight: '2rem', textDecoration: 'none' }}>
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  px: 2,
-                  py: 0.5,
-                  borderRadius: 3,
-                  background: 'rgba(255, 107, 53, 0.1)',
-                  border: '1px solid rgba(255, 107, 53, 0.3)',
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: 700,
-                    background: 'linear-gradient(135deg, #FF6B35 0%, #FF8C61 100%)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
-                    display: 'inline',
-                  }}
-                >
-                  UX
-                </Typography>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    fontWeight: 700,
-                    color: '#B0B0B0',
-                    display: 'inline',
-                  }}
-                >
-                  ercise
-                </Typography>
-              </Box>
+            {/* Desktop Logo */}
+            <Link
+              href="/"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                marginRight: '2rem',
+                textDecoration: 'none',
+              }}
+            >
+              <Image
+                src="/images/logo.webp"
+                alt="UXercise Logo"
+                width={120}
+                height={40}
+                style={{ objectFit: 'contain' }}
+                priority
+              />
             </Link>
 
             {/* Desktop Navigation */}
@@ -130,7 +119,13 @@ export default function Header() {
             </Box>
 
             {/* Mobile Menu Button */}
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'flex-end' }}>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: 'flex', md: 'none' },
+                justifyContent: 'flex-end',
+              }}
+            >
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
@@ -150,7 +145,7 @@ export default function Header() {
         open={mobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{
-          keepMounted: true, // Better mobile performance
+          keepMounted: true,
         }}
         sx={{
           display: { xs: 'block', md: 'none' },
