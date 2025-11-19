@@ -25,7 +25,6 @@ import {
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import marketplaceDataRaw from '@/data/marketplace.json';
-import ProductPlaceholder from '@/components/ProductPlaceholder';
 import { MarketplaceItem } from '@/types/marketplace';
 
 // Type-cast the imported data to ensure TypeScript knows the correct type
@@ -191,16 +190,19 @@ export default function Marketplace() {
                     position: 'relative',
                   }}
                 >
-                  <Box
+                  <CardMedia
+                    component="img"
                     className="product-image"
                     sx={{
                       width: '100%',
                       height: '100%',
+                      objectFit: 'contain',
+                      p: 2,
                       transition: 'transform 0.3s ease-in-out',
                     }}
-                  >
-                    <ProductPlaceholder type={product.name} width={200} height={200} />
-                  </Box>
+                    image={product.image}
+                    alt={product.name}
+                  />
                 </Box>
 
                 <CardContent sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
