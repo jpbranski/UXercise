@@ -1,1 +1,74 @@
-[]
+[
+  {
+    "name": "Rogue Powerblock Elite EXP",
+    "description": "The evolution of the expandable dumbbell continues with the PowerBlock Elite EXP Series; a welded steel product that can replace an entire storage rack of traditional dumbbells with a single pair.",
+    "url": "https://www.roguefitness.com/powerblock-series-elite-exp-dumbbells",
+    "affiliate": false,
+    "image": "/images/marketplace/rogue-powerblock-elite.webp",
+    "category": "Equipment",
+    "tags": []
+  },
+  {
+    "name": "Amazon Basics Neoprene Dumbbells",
+    "description": "2 pound dumbbell (set of 2) for exercise and strength training.",
+    "url": "https://amzn.to/3KcArff",
+    "affiliate": true,
+    "image": "/images/marketplace/amazon-basics-neoprene-dumbbells.webp",
+    "category": "Equipment",
+    "tags": []
+  },
+  {
+    "name": "The Original Abmat",
+    "description": "This Rogue Original AbMat—the fundamental core training accessory, flexes the spine to lengthen the abdominal muscles for more effective sit-ups using compound movements.",
+    "url": "https://www.roguefitness.com/the-original-abmat",
+    "affiliate": false,
+    "image": "/images/marketplace/rogue-original-abmat.webp",
+    "category": "Equipment",
+    "tags": []
+  },
+  {
+    "name": "Sportsroyals Power Tower Pull Up Bar Station",
+    "description": "Whether you are performing pull-ups, dips, knee raises, or other exercises, The Sportsroyals Power Tower remains steady without any wobbling or shaking, ensuring a safe and effective workout session.",
+    "url": "https://amzn.to/47NRIVb",
+    "affiliate": true,
+    "image": "/images/marketplace/sportsroyals-power-tower.webp",
+    "category": "Equipment",
+    "tags": []
+  },
+  {
+    "name": "Oura Ring 4",
+    "description": "Oura tracks over 50 health metrics, including sleep, activity, stress, heart health, and women’s health metrics.",
+    "url": "https://amzn.to/4o7v7YH",
+    "affiliate": true,
+    "image": "/images/marketplace/oura-ring-4.webp",
+    "category": "Accessories",
+    "tags": []
+  },
+  {
+    "name": "RYSE X Blender Bottle",
+    "description": "Strada™ x RYSE is the ultimate shaker cup. The bottle’s a spill-proof locking lid opens and closes with the touch of a button",
+    "url": "https://rysesupps.com/products/ryse-blender-bottle?variant=40004951933024",
+    "affiliate": false,
+    "image": "/images/marketplace/RYSE-x-blender-bottle.webp",
+    "category": "Accessories",
+    "tags": []
+  },
+  {
+    "name": "Ryse Loaded Protein Powder - Milk Chocolate",
+    "description": "PREMIUM PROTEIN FORMULA: Delivers 25g of protein per serving from whey isolate and concentrate to support muscle building, recovery, and daily nutrition—with a smooth texture and indulgent great flavor.",
+    "url": "https://amzn.to/4oPwU5K",
+    "affiliate": true,
+    "image": "/images/marketplace/RYSE-milk-chocolate.webp",
+    "category": "Supplements",
+    "tags": []
+  },
+  {
+    "name": "Rogue RM-6 Monster Rack 2.0",
+    "description": "The RM-6 Monster Rack 2.0 is a fully customizable power rack designed and built in the USA to meet the high-performance demands of elite athletes, training facilities, and home gyms.",
+    "url": "https://www.roguefitness.com/rogue-rm-6-bolt-together-monster-rack-2-0",
+    "affiliate": false,
+    "image": "/images/marketplace/rogue-rm6.webp",
+    "category": "Equipment",
+    "tags": []
+  }
+]
