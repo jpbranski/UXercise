@@ -6,6 +6,8 @@ import Box from '@mui/material/Box';
 import theme from '@/theme/theme';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import CookieConsentBanner from '@/components/CookieConsent/CookieConsentBanner';
+import ConditionalAnalytics from '@/components/ConditionalAnalytics';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -21,31 +23,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* ADSENSE */}
-        <script>
-          <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE}`}
-            crossOrigin="anonymous"></script>
-        </script>
-        {/* ANALYTICS */}
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_ANALYTICS}`}></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', '${process.env.NEXT_PUBLIC_ANALYTICS}');
-    `,
-          }}
-        />
-
-
-      </head>
       <body>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
+            {/* Conditional Analytics - Only loads with user consent */}
+            <ConditionalAnalytics />
             <Box
               sx={{
                 display: 'flex',
@@ -59,6 +42,8 @@ export default function RootLayout({
               </Box>
               <Footer />
             </Box>
+            {/* Cookie Consent Banner - GDPR/CCPA/ePrivacy compliant */}
+            <CookieConsentBanner />
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
