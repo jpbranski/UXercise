@@ -28,32 +28,49 @@ export default function TemplatePickerModal({ open, onClose, onSelect }: Templat
   };
 
   return (
-    <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
-      <DialogTitle sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Typography variant="h6">Choose a Template</Typography>
+    <Dialog
+      open={open}
+      onClose={onClose}
+      maxWidth="sm"
+      fullWidth
+      PaperProps={{
+        sx: {
+          borderRadius: 3,
+          maxWidth: 420,
+        },
+      }}
+    >
+      <DialogTitle sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', pb: 1 }}>
+        <Typography variant="h6" sx={{ fontWeight: 700, fontSize: '1.4rem' }}>
+          Choose a Template
+        </Typography>
         <IconButton onClick={onClose} size="small">
           <CloseIcon />
         </IconButton>
       </DialogTitle>
 
-      <DialogContent>
-        <Typography variant="body2" sx={{ color: 'text.secondary', mb: 3 }}>
+      <DialogContent sx={{ px: 3, pb: 3 }}>
+        <Typography variant="body2" sx={{ color: 'text.secondary', mb: 3, fontSize: '0.9rem' }}>
           Start with a proven workout template and customize it to your needs
         </Typography>
 
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, maxHeight: 500, overflow: 'auto' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, maxHeight: 500, overflow: 'auto', pr: 0.5 }}>
           {WORKOUT_TEMPLATES.map((template) => (
             <Card
               key={template.id}
+              elevation={0}
               sx={{
                 cursor: 'pointer',
-                transition: 'all 0.2s',
+                transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                border: '2px solid',
+                borderColor: 'divider',
+                borderRadius: 2.5,
+                minHeight: 100,
                 '&:hover': {
-                  transform: 'translateY(-2px)',
-                  boxShadow: 4,
+                  transform: 'translateY(-3px)',
+                  boxShadow: '0 6px 20px rgba(0,0,0,0.1)',
                   borderColor: 'primary.main',
                 },
-                border: '2px solid transparent',
               }}
               onClick={() => handleSelect(template)}
             >

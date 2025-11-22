@@ -140,8 +140,22 @@ export default function WorkoutsList({
             const lastPerformed = getLastPerformed(workout.id);
 
             return (
-              <Card key={workout.id} sx={{ mb: 2 }}>
-                <CardContent>
+              <Card
+                key={workout.id}
+                elevation={0}
+                sx={{
+                  mb: 2,
+                  borderRadius: 3,
+                  border: '1px solid',
+                  borderColor: 'divider',
+                  transition: 'all 0.2s ease',
+                  '&:hover': {
+                    borderColor: 'primary.main',
+                    boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
+                  },
+                }}
+              >
+                <CardContent sx={{ p: 2.5 }}>
                   {/* Header Row */}
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
                     <Box sx={{ flex: 1 }}>
@@ -196,35 +210,51 @@ export default function WorkoutsList({
 
                   {/* Scheduling Row */}
                   <Box>
-                    <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', mb: 1 }}>
-                      Schedule:
+                    <Typography
+                      variant="caption"
+                      sx={{
+                        color: 'text.secondary',
+                        display: 'block',
+                        mb: 1,
+                        fontWeight: 600,
+                        fontSize: '0.7rem',
+                      }}
+                    >
+                      SCHEDULE:
                     </Typography>
-                    <Box sx={{ display: 'flex', gap: 0.5 }}>
+                    <Box sx={{ display: 'flex', gap: 0.75 }}>
                       {DAYS.map((day, index) => (
-                        <ToggleButton
+                        <Box
                           key={index}
-                          value={index}
-                          selected={workout.scheduledDays.includes(index)}
-                          onChange={() => handleToggleDay(workout, index)}
-                          size="small"
+                          onClick={() => handleToggleDay(workout, index)}
                           sx={{
-                            width: 36,
-                            height: 36,
-                            p: 0,
+                            width: 38,
+                            height: 38,
+                            borderRadius: '50%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
                             fontSize: '0.75rem',
-                            fontWeight: 600,
-                            '&.Mui-selected': {
-                              bgcolor: 'primary.main',
-                              color: 'white',
-                              '&:hover': {
-                                bgcolor: 'primary.dark',
-                              },
+                            fontWeight: 700,
+                            cursor: 'pointer',
+                            transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                            bgcolor: workout.scheduledDays.includes(index) ? 'primary.main' : 'background.paper',
+                            color: workout.scheduledDays.includes(index) ? 'white' : 'text.secondary',
+                            border: '2px solid',
+                            borderColor: workout.scheduledDays.includes(index) ? 'primary.main' : 'divider',
+                            boxShadow: workout.scheduledDays.includes(index)
+                              ? '0 2px 8px rgba(255,107,53,0.3)'
+                              : 'none',
+                            '&:hover': {
+                              transform: 'scale(1.1)',
+                              bgcolor: workout.scheduledDays.includes(index) ? 'primary.dark' : 'rgba(255,107,53,0.08)',
+                              borderColor: 'primary.main',
                             },
                           }}
                           title={DAY_NAMES[index]}
                         >
                           {day}
-                        </ToggleButton>
+                        </Box>
                       ))}
                     </Box>
                   </Box>

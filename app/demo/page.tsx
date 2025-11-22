@@ -161,9 +161,27 @@ export default function DemoPage() {
 
   return (
     <DemoLayout>
-      <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', minHeight: '80vh' }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
         {/* Content Area */}
-        <Box sx={{ flex: 1, overflow: 'auto' }}>
+        <Box
+          sx={{
+            flex: 1,
+            overflow: 'auto',
+            '&::-webkit-scrollbar': {
+              width: 8,
+            },
+            '&::-webkit-scrollbar-track': {
+              bgcolor: 'transparent',
+            },
+            '&::-webkit-scrollbar-thumb': {
+              bgcolor: 'divider',
+              borderRadius: 4,
+              '&:hover': {
+                bgcolor: 'text.secondary',
+              },
+            },
+          }}
+        >
           {view === 'dashboard' && (
             <Dashboard
               workouts={workouts}
@@ -210,8 +228,35 @@ export default function DemoPage() {
 
         {/* Bottom Navigation */}
         {view !== 'player' && (
-          <Paper sx={{ position: 'sticky', bottom: 0, zIndex: 10 }} elevation={8}>
-            <BottomNavigation value={view} onChange={handleNavChange} showLabels>
+          <Paper
+            sx={{
+              position: 'sticky',
+              bottom: 0,
+              zIndex: 10,
+              borderTop: '1px solid',
+              borderColor: 'divider',
+            }}
+            elevation={0}
+          >
+            <BottomNavigation
+              value={view}
+              onChange={handleNavChange}
+              showLabels
+              sx={{
+                bgcolor: 'background.paper',
+                '& .MuiBottomNavigationAction-root': {
+                  minWidth: 'auto',
+                  px: 1,
+                  transition: 'all 0.2s ease',
+                  '&.Mui-selected': {
+                    color: 'primary.main',
+                    '& .MuiBottomNavigationAction-label': {
+                      fontWeight: 600,
+                    },
+                  },
+                },
+              }}
+            >
               <BottomNavigationAction label="Dashboard" value="dashboard" icon={<DashboardIcon />} />
               <BottomNavigationAction label="Builder" value="builder" icon={<EditIcon />} />
               <BottomNavigationAction label="Workouts" value="workouts" icon={<ListIcon />} />
