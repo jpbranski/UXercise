@@ -40,11 +40,11 @@ export default function Dashboard({
   return (
     <Box sx={{ p: 3 }}>
       {/* Welcome Header */}
-      <Box sx={{ mb: 4 }}>
-        <Typography variant="h4" sx={{ fontWeight: 700, mb: 0.5 }}>
+      <Box sx={{ mb: 3 }}>
+        <Typography variant="h4" sx={{ fontWeight: 700, fontSize: '1.6rem', mb: 0.5 }}>
           Welcome Back
         </Typography>
-        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+        <Typography variant="body2" sx={{ color: 'text.secondary', fontWeight: 400 }}>
           Ready to crush your workout?
         </Typography>
       </Box>
@@ -52,38 +52,54 @@ export default function Dashboard({
       {/* Stat Cards */}
       <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 2, mb: 3 }}>
         <Card
+          elevation={0}
           sx={{
             background: 'linear-gradient(135deg, #FF6B35 0%, #E64A19 100%)',
             color: 'white',
+            borderRadius: 3,
+            height: { xs: 100, sm: 110 },
+            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+            '&:hover': {
+              transform: 'translateY(-2px)',
+              boxShadow: '0 8px 24px rgba(255,107,53,0.4)',
+            },
           }}
         >
-          <CardContent>
-            <Typography variant="h3" sx={{ fontWeight: 700, mb: 0.5 }}>
+          <CardContent sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', p: 2.5 }}>
+            <Typography variant="h3" sx={{ fontWeight: 700, fontSize: '1.8rem', mb: 0.5 }}>
               {thisWeekCount}
             </Typography>
-            <Typography variant="body2" sx={{ opacity: 0.9 }}>
+            <Typography variant="body2" sx={{ opacity: 0.95, fontWeight: 500, textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: 0.5 }}>
               This Week
             </Typography>
-            <Typography variant="caption" sx={{ opacity: 0.7 }}>
+            <Typography variant="caption" sx={{ opacity: 0.8, fontSize: '0.7rem' }}>
               workouts
             </Typography>
           </CardContent>
         </Card>
 
         <Card
+          elevation={0}
           sx={{
             background: 'linear-gradient(135deg, #9D4EDD 0%, #7B2CBF 100%)',
             color: 'white',
+            borderRadius: 3,
+            height: { xs: 100, sm: 110 },
+            transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+            '&:hover': {
+              transform: 'translateY(-2px)',
+              boxShadow: '0 8px 24px rgba(157,78,221,0.4)',
+            },
           }}
         >
-          <CardContent>
-            <Typography variant="h3" sx={{ fontWeight: 700, mb: 0.5 }}>
+          <CardContent sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', p: 2.5 }}>
+            <Typography variant="h3" sx={{ fontWeight: 700, fontSize: '1.8rem', mb: 0.5 }}>
               {totalMinutes}
             </Typography>
-            <Typography variant="body2" sx={{ opacity: 0.9 }}>
+            <Typography variant="body2" sx={{ opacity: 0.95, fontWeight: 500, textTransform: 'uppercase', fontSize: '0.75rem', letterSpacing: 0.5 }}>
               Total Time
             </Typography>
-            <Typography variant="caption" sx={{ opacity: 0.7 }}>
+            <Typography variant="caption" sx={{ opacity: 0.8, fontSize: '0.7rem' }}>
               minutes
             </Typography>
           </CardContent>
@@ -92,42 +108,52 @@ export default function Dashboard({
 
       {/* Quick Start Card */}
       <Card
+        elevation={0}
         sx={{
           mb: 3,
-          background: 'linear-gradient(135deg, rgba(255,107,53,0.15) 0%, rgba(157,78,221,0.15) 100%)',
+          height: { xs: 90, sm: 100 },
+          background: 'linear-gradient(135deg, rgba(255,107,53,0.12) 0%, rgba(157,78,221,0.12) 100%)',
           border: '2px solid',
           borderColor: 'primary.main',
+          borderRadius: 3,
           cursor: 'pointer',
-          transition: 'transform 0.2s, box-shadow 0.2s',
+          transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
           '&:hover': {
             transform: 'translateY(-2px)',
-            boxShadow: '0 8px 24px rgba(255,107,53,0.3)',
+            boxShadow: '0 8px 24px rgba(255,107,53,0.35), 0 0 0 1px rgba(255,107,53,0.2)',
+            borderColor: 'primary.dark',
+            background: 'linear-gradient(135deg, rgba(255,107,53,0.18) 0%, rgba(157,78,221,0.18) 100%)',
           },
         }}
         onClick={onCreateWorkout}
       >
-        <CardContent sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <CardContent sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '100%', p: 2.5 }}>
           <Box>
-            <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5 }}>
+            <Typography variant="h6" sx={{ fontWeight: 700, fontSize: '1.1rem', mb: 0.5 }}>
               Create New Workout
             </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+            <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.875rem' }}>
               Build your custom routine
             </Typography>
           </Box>
-          <IconButton
+          <Box
             sx={{
+              width: 52,
+              height: 52,
+              borderRadius: '50%',
               bgcolor: 'primary.main',
               color: 'white',
-              width: 56,
-              height: 56,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'transform 0.2s ease',
               '&:hover': {
-                bgcolor: 'primary.dark',
+                transform: 'rotate(90deg)',
               },
             }}
           >
-            <AddCircleIcon sx={{ fontSize: 32 }} />
-          </IconButton>
+            <AddCircleIcon sx={{ fontSize: 30 }} />
+          </Box>
         </CardContent>
       </Card>
 
@@ -230,15 +256,27 @@ export default function Dashboard({
           })}
         </Box>
       ) : (
-        <Box sx={{ textAlign: 'center', py: 6 }}>
-          <FitnessCenterIcon sx={{ fontSize: 64, color: 'text.secondary', mb: 2, opacity: 0.5 }} />
-          <Typography variant="h6" sx={{ color: 'text.secondary', mb: 1 }}>
+        <Box sx={{ textAlign: 'center', py: 8 }}>
+          <FitnessCenterIcon sx={{ fontSize: 56, color: 'text.secondary', mb: 2, opacity: 0.3 }} />
+          <Typography variant="h6" sx={{ color: 'text.primary', fontWeight: 600, mb: 1 }}>
             No workouts yet
           </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary', mb: 3 }}>
+          <Typography variant="body2" sx={{ color: 'text.secondary', mb: 4, fontStyle: 'italic' }}>
             Start by creating your first workout!
           </Typography>
-          <Button variant="contained" onClick={onCreateWorkout} startIcon={<AddCircleIcon />}>
+          <Button
+            variant="contained"
+            onClick={onCreateWorkout}
+            startIcon={<AddCircleIcon />}
+            sx={{
+              borderRadius: 8,
+              px: 3,
+              py: 1.25,
+              fontSize: '0.95rem',
+              fontWeight: 600,
+              textTransform: 'none',
+            }}
+          >
             Create Workout
           </Button>
         </Box>

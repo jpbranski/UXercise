@@ -130,8 +130,16 @@ export default function LogView({ logs }: LogViewProps) {
       </Typography>
 
       {/* Filters */}
-      <Card sx={{ mb: 3 }}>
-        <CardContent>
+      <Card
+        elevation={0}
+        sx={{
+          mb: 3,
+          borderRadius: 3,
+          border: '1px solid',
+          borderColor: 'divider',
+        }}
+      >
+        <CardContent sx={{ p: 2.5 }}>
           <Typography variant="subtitle2" sx={{ mb: 2 }}>
             Filters
           </Typography>
@@ -218,8 +226,26 @@ export default function LogView({ logs }: LogViewProps) {
             });
 
             return (
-              <Accordion key={log.id} sx={{ mb: 1 }}>
-                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+              <Accordion
+                key={log.id}
+                elevation={0}
+                sx={{
+                  mb: 1.5,
+                  borderRadius: 2.5,
+                  border: '1px solid',
+                  borderColor: 'divider',
+                  '&:before': { display: 'none' },
+                  transition: 'all 0.2s ease',
+                  '&:hover': {
+                    borderColor: 'primary.main',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+                  },
+                }}
+              >
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  sx={{ px: 2.5, py: 1 }}
+                >
                   <Box sx={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', pr: 2 }}>
                     <Box>
                       <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>

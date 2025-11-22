@@ -27,6 +27,7 @@ import { Workout, WorkoutExercise, WorkoutExerciseSet, Difficulty, WorkoutTag, S
 import { EXERCISE_LIBRARY } from '@/data/demo/exercises';
 import ExercisePickerModal from './ExercisePickerModal';
 import TemplatePickerModal from './TemplatePickerModal';
+import SetEditor from './SetEditor';
 
 interface WorkoutBuilderProps {
   workout: Workout | null;
@@ -361,72 +362,35 @@ export default function WorkoutBuilder({ workout, onSave, onCancel }: WorkoutBui
                   </Box>
 
                   {/* Sets */}
-                  <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', mb: 1 }}>
+                  <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block', mb: 1.5, fontWeight: 600 }}>
                     Sets
                   </Typography>
-                  {exercise.sets.map((set, setIdx) => (
-                    <Box
-                      key={set.id}
-                      sx={{ display: 'flex', gap: 1, mb: 1, alignItems: 'center', flexWrap: 'wrap' }}
-                    >
-                      <Typography variant="caption" sx={{ minWidth: 40 }}>
-                        Set {setIdx + 1}
-                      </Typography>
-                      <FormControl size="small" sx={{ minWidth: 100 }}>
-                        <Select
-                          value={set.setType}
-                          onChange={(e) => handleSetChange(exercise.id, set.id, 'setType', e.target.value)}
-                          displayEmpty
-                        >
-                          {SET_TYPES.map((type) => (
-                            <MenuItem key={type} value={type}>
-                              {type}
-                            </MenuItem>
-                          ))}
-                        </Select>
-                      </FormControl>
-                      <TextField
-                        type="number"
-                        size="small"
-                        label="Reps"
-                        value={set.targetReps || ''}
-                        onChange={(e) =>
-                          handleSetChange(exercise.id, set.id, 'targetReps', parseInt(e.target.value) || 0)
-                        }
-                        sx={{ width: 80 }}
+                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+                    {exercise.sets.map((set, setIdx) => (
+                      <SetEditor
+                        key={set.id}
+                        set={set}
+                        setIndex={setIdx}
+                        canDelete={exercise.sets.length > 1}
+                        onUpdate={(field, value) => handleSetChange(exercise.id, set.id, field, value)}
+                        onDelete={() => handleRemoveSet(exercise.id, set.id)}
                       />
-                      <TextField
-                        type="number"
-                        size="small"
-                        label="Weight"
-                        value={set.targetWeight || ''}
-                        onChange={(e) =>
-                          handleSetChange(exercise.id, set.id, 'targetWeight', parseInt(e.target.value) || 0)
-                        }
-                        sx={{ width: 80 }}
-                      />
-                      <TextField
-                        type="number"
-                        size="small"
-                        label="Rest (s)"
-                        value={set.restSeconds}
-                        onChange={(e) =>
-                          handleSetChange(exercise.id, set.id, 'restSeconds', parseInt(e.target.value) || 0)
-                        }
-                        sx={{ width: 90 }}
-                      />
-                      {exercise.sets.length > 1 && (
-                        <IconButton
-                          size="small"
-                          color="error"
-                          onClick={() => handleRemoveSet(exercise.id, set.id)}
-                        >
-                          <DeleteIcon fontSize="small" />
-                        </IconButton>
-                      )}
-                    </Box>
-                  ))}
-                  <Button size="small" startIcon={<AddIcon />} onClick={() => handleAddSet(exercise.id)}>
+                    ))}
+                  </Box>
+                  <Button
+                    size="small"
+                    startIcon={<AddIcon />}
+                    onClick={() => handleAddSet(exercise.id)}
+                    sx={{
+                      mt: 1,
+                      textTransform: 'none',
+                      fontWeight: 600,
+                      color: 'primary.main',
+                      '&:hover': {
+                        bgcolor: 'rgba(255,107,53,0.08)',
+                      },
+                    }}
+                  >
                     Add Set
                   </Button>
                 </CardContent>
